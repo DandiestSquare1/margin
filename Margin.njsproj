@@ -33,12 +33,14 @@
     <Compile Include="app.js" />
     <Compile Include="config\auth.js" />
     <Compile Include="models\user.js" />
+    <Compile Include="routes\dashboard.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\sign_in.js" />
     <Compile Include="routes\sign_up.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
+    <Content Include="views\dashboard.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
     <Content Include="views\sign_in.jade" />

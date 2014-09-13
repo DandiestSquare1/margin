@@ -16,6 +16,7 @@ var auth = require('./config/auth.js')(passport);
 
 var sign_up = require('./routes/sign_up');
 var sign_in = require('./routes/sign_in');
+var dashboard = require('./routes/dashboard');
 
 var app = express();
 
@@ -53,7 +54,7 @@ app.get('/', routes.index);
 app.get('/sign_up', sign_up.createUser);
 
 app.post('/sign_up', passport.authenticate('local-signup', {
-    successRedirect : '/protected',
+    successRedirect : '/dashboard',
     failureRedirect : '/sign_up',
     failureFlash : true
 }));
@@ -61,14 +62,12 @@ app.post('/sign_up', passport.authenticate('local-signup', {
 app.get('/sign_in', sign_in.createSession);
 
 app.post('/sign_in', passport.authenticate('local-login', {
-    successRedirect : '/protected',
+    successRedirect : '/dashboard',
     failureRedirect : '/sign_in',
     failureFlash : true
 }));
 
-app.get('/protected', isLoggedIn, function (req, res) {
-    res.json({ success: true });
-});
+app.get('/dashboard', isLoggedIn, dashboard.build);
 
 app.get('/sign_out', function (req, res) {
     req.logout();
