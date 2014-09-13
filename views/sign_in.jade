@@ -1,0 +1,11 @@
+﻿extends layout
+
+block content
+    h1 Sign In
+    block flash
+        if (message.length > 0)
+            p= message
+    form(action='sign_in', method='post')
+        input(type='email', name='email', placeholder='Email')
+        input(type='password', name='password', placeholder='Password')
+        button(type='submit') Sign In
