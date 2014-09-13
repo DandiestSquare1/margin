@@ -13,6 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = require('./models/user');
 var auth = require('./config/auth.js')(passport);
+var schedule = require('node-schedule');
 
 var sign_up = require('./routes/sign_up');
 var sign_in = require('./routes/sign_in');
@@ -41,6 +42,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // connect to db
 mongoose.connect('mongodb://localhost/margin');
+
+/* test scheduler
+var date = new Date(2014, 8, 13, 14, 3, 0, 0);
+var j = schedule.scheduleJob(date, function () {
+    console.log('Scheduler worked!');
+});*/
 
 
 
