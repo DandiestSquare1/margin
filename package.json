@@ -16,6 +16,8 @@
     "connect-flash": "*",
     "mongoose": "3.8.16",
     "bcrypt-nodejs": "*",
-    "node-schedule": "*"
+    "node-schedule": "*",
+    "nodemailer": "*",
+    "nodemailer-smtp-transport": "*"
   }
 }

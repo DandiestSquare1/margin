@@ -5,6 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>ExpressApp7</Name>
     <RootNamespace>ExpressApp7</RootNamespace>
+    <EnvironmentVariables>MANDRILL_USER=sachan.ganesh@gmail.com;MANDRILL_KEY=b7gEMH5pZFi7GRYyEsDvmg;SALT=12;</EnvironmentVariables>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -32,7 +33,10 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="config\auth.js" />
+    <Compile Include="config\mailer.js" />
+    <Compile Include="config\token.js" />
     <Compile Include="models\user.js" />
+    <Compile Include="routes\account.js" />
     <Compile Include="routes\dashboard.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\sign_in.js" />

@@ -15,6 +15,7 @@ var User = require('./models/user');
 var auth = require('./config/auth.js')(passport);
 var schedule = require('node-schedule');
 
+var account = require('./routes/account');
 var sign_up = require('./routes/sign_up');
 var sign_in = require('./routes/sign_in');
 var dashboard = require('./routes/dashboard');
@@ -61,7 +62,7 @@ app.get('/', routes.index);
 app.get('/sign_up', sign_up.createUser);
 
 app.post('/sign_up', passport.authenticate('local-signup', {
-    successRedirect : '/dashboard',
+    successRedirect : '/user/force_confirm',
     failureRedirect : '/sign_up',
     failureFlash : true
 }));
@@ -76,11 +77,14 @@ app.post('/sign_in', passport.authenticate('local-login', {
 
 app.get('/dashboard', isLoggedIn, dashboard.build);
 
+app.get('/user/force_confirm', account.forceConfirmation);
+
+app.get('/user/confirm', account.confirm);
+
 app.get('/sign_out', function (req, res) {
     req.logout();
     res.redirect('/');
 });
-
 
 
 // route middleware to make sure a user is logged in

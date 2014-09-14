@@ -1,5 +1,6 @@
 ﻿var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
+var mailer = require('./mailer');
 
 module.exports = function (passport) {
     
@@ -34,9 +35,11 @@ module.exports = function (passport) {
                     newUser.userName = req.body.userName;
                     newUser.email = email;
                     newUser.password = newUser.generateHash(password);
+                    newUser.token = newUser.generateHash(newUser.id);
                     newUser.save(function (err) {
                         if (err)
                             throw err;
+                        mailer.confirmAccount(newUser.email, newUser.token);
                         return done(null, newUser);
                     });
                 }
@@ -55,6 +58,8 @@ module.exports = function (passport) {
                 return done(err);
             if (!user)
                 return done(null, false, req.flash('warn', 'No user found.'));
+            if (!user.confirmed)
+                return done(null, false, req.flash('warn', 'Account has not been confirmed.'));
             if (!user.validPassword(password))
                 return done(null, false, req.flash('warn', 'Oops! Wrong password.'));
             return done(null, user);
