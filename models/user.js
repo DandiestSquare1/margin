@@ -10,7 +10,7 @@ var userSchema = mongoose.Schema({
     token        : String,
     flag         : {
         state    : { type: Boolean, default: false },
-        token    : { type: String }
+        token    : { type: String, default: '' }
     }
 });
 

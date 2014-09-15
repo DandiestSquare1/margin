@@ -44,6 +44,7 @@
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
+    <Content Include="views\change_password.jade" />
     <Content Include="views\dashboard.jade" />
     <Content Include="views\forgot_password.jade" />
     <Content Include="views\index.jade" />
