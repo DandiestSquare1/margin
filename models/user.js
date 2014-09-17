@@ -7,6 +7,9 @@ var userSchema = mongoose.Schema({
     email        : String,
     password     : String,
     confirmed    : { type: Boolean, default: false },
+    game         : {
+        amount   : { type: Number, default: 100000 }
+    },
     token        : String,
     flag         : {
         state    : { type: Boolean, default: false },

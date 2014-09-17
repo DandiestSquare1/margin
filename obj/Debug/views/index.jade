@@ -1,0 +1,8 @@
+﻿extends layout
+
+block content
+    block flash
+        if (message.notice.length > 0)
+            p= message.notice
+        if (message.warning.length > 0)
+            p= message.warning

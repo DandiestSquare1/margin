@@ -1,0 +1,14 @@
+﻿extends layout
+
+block content
+    h1 Sign Up
+    block flash
+        if (message.notice.length > 0)
+            p= message.notice
+        if (message.warning.length > 0)
+            p= message.warning
+    form(action= '/sign_up', method='post')
+        input(type='text', name='userName', placeholder='Username')
+        input(type='email', name='email', placeholder='Email')
+        input(type='password', name='password', placeholder='Password')
+        button(type='submit') Sign Up

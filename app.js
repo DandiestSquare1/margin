@@ -77,16 +77,12 @@ app.post('/sign_in', passport.authenticate('local-login', {
 
 app.get('/dashboard', isLoggedIn, dashboard.build);
 
+// user confirmation and password changes
 app.get('/user/force_confirm', account.forceConfirmation);
-
 app.get('/user/confirm', account.confirm);
-
 app.get('/user/forgot_password', account.forgotPassword_build);
-
 app.post('/user/forgot_password', account.forgotPassword);
-
 app.get('/user/change_password', account.changePassword_build);
-
 app.post('/user/change_password', account.changePassword);
 
 app.get('/sign_out', function (req, res) {
