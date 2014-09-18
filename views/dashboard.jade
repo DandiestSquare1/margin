@@ -1,5 +1,9 @@
 ﻿extends layout
 
 block content
-    h1 Dashboard
-    h3 $#{user.game.amount} in account
+    div(ng-app='DashboardApp', ng-controller='DashCntrl', ng-init='initUser(#{user.userName}, #{user.game})')
+        h1 Dashboard
+        h3 $#{user.game.amount} in account
+
+block scripts
+    script(src='/javascripts/ng-dashboard.js')
