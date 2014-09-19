@@ -39,6 +39,7 @@
     <Compile Include="public\javascripts\ng-dashboard.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\dashboard.js" />
+    <Compile Include="routes\game.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\sign_in.js" />
     <Compile Include="routes\sign_up.js" />

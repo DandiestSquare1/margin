@@ -16,6 +16,7 @@ var auth = require('./config/auth.js')(passport);
 var schedule = require('node-schedule');
 
 var account = require('./routes/account');
+var game = require('./routes/game');
 var sign_up = require('./routes/sign_up');
 var sign_in = require('./routes/sign_in');
 var dashboard = require('./routes/dashboard');
@@ -84,6 +85,9 @@ app.get('/user/forgot_password', account.forgotPassword_build);
 app.post('/user/forgot_password', account.forgotPassword);
 app.get('/user/change_password', account.changePassword_build);
 app.post('/user/change_password', account.changePassword);
+
+app.get('/api/user/:id', account.displayById);
+app.post('/api/user/:id', account.updateById);
 
 app.get('/sign_out', function (req, res) {
     req.logout();

@@ -1,5 +1,6 @@
 ﻿var Q = require('q');
 var token = require('../config/token');
+var User = require('../models/user');
 var mailer = require('../config/mailer');
 
 exports.forceConfirmation = function (req, res) {
@@ -65,5 +66,37 @@ exports.changePassword = function (req, res) {
         }
     }, function (err) {
         console.log(err);
+    });
+};
+
+exports.displayById = function (req, res) {
+    User.findOne({ _id : req.param('id') }, function (err, user) {
+        if (err)
+            return done(err);
+        res.send({
+            email    : user.email,
+            userName : user.userName,
+            game     : user.game
+        });
+    });
+}
+
+exports.updateById = function (req, res) {
+    User.findOne({ _id : req.param('id') }, function (err, user) {
+        if (err)
+            return done(err);
+        if (req.query.email)
+            user.email = req.query.email;
+        if (req.query.userName)
+            user.userName = req.query.userName;
+        if (req.query.game)
+            user.game = req.query.game;
+        user.save(function (err) {
+            if (err)
+                throw err;
+            else
+                console.log("User successfully updated.");
+        });
+        res.send();
     });
 };
