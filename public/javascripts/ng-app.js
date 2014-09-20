@@ -1,6 +1,6 @@
 ﻿var app = angular.module('MarginApp', []);
 
-app.factory('User', function ($http) {
+/*app.factory('User', function ($http) {
     return {
         getProperties : function (id) {
             var deferred = Q.defer();
@@ -15,23 +15,19 @@ app.factory('User', function ($http) {
             return deferred.promise;
         }
     };
-});
+});*/
 
-app.controller('MainCntrl', ['$scope', '$http', 'User', function ($scope, $http, User) {
+app.controller('MainCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.user;
-    function init() {
-        if ($scope.uid)
-            console.log('lol');
-            User.getProperties($scope.uid).then(function (user) {
-                $scope.$apply(function () {
-                    console.log(user);
-                    $scope.user = user;
-                });
-            }, function (err) {
-                console.log(err);
-            });
+    $scope.init = function (id) {
+        $http.get('/api/user/' + id)
+        .success(function (data, status, headers, config) {
+            $scope.user = data;
+        })
+        .error(function (data, status, headers, config) {
+            console.log('err: ' + status + ', ' + config);
+        });
     }
-    init();
 }]);
 
 app.controller('DashCntrl', ['$scope', function ($scope) {
