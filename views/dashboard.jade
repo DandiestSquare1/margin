@@ -1,13 +1,10 @@
 ﻿extends layout
 
 block content
-    div(ng-app='DashboardApp', ng-controller='DashCntrl', ng-init='current_user = #{JSON.stringify(user)}; initUser(current_user)')
+    div(ng-controller='DashCntrl')
         h1 Dashboard
         div(ng-show='user.game.started')
             h3 {{user.game.amount | currency : symbol}} in account
         div(ng-hide='user.game.started')
             h3 You haven't started a stock trading game yet.
             a.btn.btn-primary(href='#', ng-click='startGame()') Start Game
-
-block scripts
-    script(src='/javascripts/ng-dashboard.js')

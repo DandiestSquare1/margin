@@ -5,7 +5,7 @@ html
     link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
     block styles
-  body
+  body(ng-app='MarginApp', ng-controller='MainCntrl', ng-init='initUser(#{JSON.stringify(uid)})')
     .container-fluid
         .navbar.navbar-default
             .navbar-header
@@ -15,20 +15,21 @@ html
                     span.icon-bar
                 a.navbar-brand(href='/') Margin
             .navbar-collapse.collapse
-                if (user)
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/sign_out') Sign Out
-                    p.navbar-text.navbar-right= user.userName
-                else
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/sign_up') Sign Up
-                        li
-                            a(href='/sign_in') Sign In
-    block content
-        block flash
+                ul.nav.navbar-nav.navbar-right(ng-show='user')
+                    li
+                        a(href='/sign_out') Sign Out
+                p.navbar-text.navbar-right(ng-show='user') {{user.userName}}
+                ul.nav.navbar-nav.navbar-right(ng-hide='user')
+                    li
+                        a(href='/sign_up') Sign Up
+                    li
+                        a(href='/sign_in') Sign In
+    .container
+        block content
+            block flash
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.1/q.js')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js')
+    script(src='/javascripts/ng-app.js')
     block scripts

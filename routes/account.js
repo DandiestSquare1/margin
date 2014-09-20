@@ -84,7 +84,6 @@ exports.displayById = function (req, res) {
         return deferred.promise;
     }
     findUser().then(function (data) {
-        console.log(data);
         res.json(data);
     }, function (err) {
         console.log(err);

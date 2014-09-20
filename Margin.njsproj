@@ -36,7 +36,7 @@
     <Compile Include="config\mailer.js" />
     <Compile Include="config\token.js" />
     <Compile Include="models\user.js" />
-    <Compile Include="public\javascripts\ng-dashboard.js" />
+    <Compile Include="public\javascripts\ng-app.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\dashboard.js" />
     <Compile Include="routes\game.js" />
