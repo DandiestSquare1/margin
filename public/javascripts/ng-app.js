@@ -20,12 +20,14 @@ app.controller('MainCntrl', ['$scope', 'User', function ($scope, User) {
     $scope.user;
     $scope.initUser = function (id) {
         User.getProperties(id).then(function (user) {
-            $scope.user = user;
+            $scope.$apply(function () {
+                $scope.user = user;
+            });
             console.log(JSON.stringify(user));
         }, function (err) {
             console.log(err);
         });
-    }
+    };
 }]);
 
 app.controller('DashCntrl', ['$scope', function ($scope) {
