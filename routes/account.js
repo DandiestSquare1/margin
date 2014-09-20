@@ -70,33 +70,53 @@ exports.changePassword = function (req, res) {
 };
 
 exports.displayById = function (req, res) {
-    User.findOne({ _id : req.param('id') }, function (err, user) {
-        if (err)
-            return done(err);
-        res.send({
-            email    : user.email,
-            userName : user.userName,
-            game     : user.game
+    function findUser() {
+        var deferred = Q.defer();
+        User.findOne({ _id : req.param('id') }, function (err, user) {
+            if (err)
+                deferred.reject(err);
+            deferred.resolve({
+                email    : user.email,
+                userName : user.userName,
+                game     : user.game
+            });
         });
+        return deferred.promise;
+    }
+    findUser().then(function (data) {
+        console.log(data);
+        res.json(data);
+    }, function (err) {
+        console.log(err);
     });
 }
 
 exports.updateById = function (req, res) {
-    User.findOne({ _id : req.param('id') }, function (err, user) {
-        if (err)
-            return done(err);
-        if (req.query.email)
-            user.email = req.query.email;
-        if (req.query.userName)
-            user.userName = req.query.userName;
-        if (req.query.game)
-            user.game = req.query.game;
-        user.save(function (err) {
+    function updateUser() {
+        var deferred = Q.defer();
+        User.findOne({ _id : req.param('id') }, function (err, user) {
             if (err)
-                throw err;
-            else
-                console.log("User successfully updated.");
+                deferred.reject(err);
+            if (req.query.email)
+                user.email = req.query.email;
+            if (req.query.userName)
+                user.userName = req.query.userName;
+            if (req.query.game)
+                user.game = req.query.game;
+            user.save(function (err) {
+                if (err)
+                    throw err;
+                else {
+                    deferred.resolve(user);
+                    console.log("User successfully updated.");
+                }
+            });
         });
-        res.send();
+        return deferred.promise;
+    }
+    updateUser().then(function (user) {
+        res.send(user);
+    }, function (err) {
+        console.log(err);    
     });
 };
