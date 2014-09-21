@@ -9,7 +9,8 @@ var userSchema = mongoose.Schema({
     confirmed    : { type: Boolean, default: false },
     game         : {
         started  : false,
-        amount   : { type: Number, default: 100000 }
+        amount   : { type: Number, default: 100000 },
+        startedOn: Date
     },
     token        : String,
     flag         : {

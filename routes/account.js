@@ -75,12 +75,21 @@ exports.displayById = function (req, res) {
         User.findOne({ _id : req.params.id }, function (err, user) {
             if (err)
                 deferred.reject(err);
-            deferred.resolve({
-                _id      : user._id,
-                email    : user.email,
-                userName : user.userName,
-                game     : user.game
-            });
+            if (user)
+                deferred.resolve({
+                    _id      : user._id,
+                    email    : user.email,
+                    userName : user.userName,
+                    game     : user.game
+                });
+            else {
+                deferred.reject('User does not exist.');
+                res.send({
+                    Check : 'yourself before you wreck yourself, fool.',
+                    Um : "maybe you're not authorized to do this.",
+                    Uh : "maybe the user doesn't exist."
+                });
+            }
         });
         return deferred.promise;
     }
@@ -107,14 +116,23 @@ exports.updateById = function (req, res) {
                 if (req.body.game.amount)
                     user.game.amount = req.body.game.amout;
             }
-            user.save(function (err) {
-                if (err)
-                    deferred.reject(err);
-                else {
-                    console.log("User successfully updated.");
-                    deferred.resolve(user);
-                }
-            });
+            if (user)
+                user.save(function (err) {
+                    if (err)
+                        deferred.reject(err);
+                    else {
+                        console.log("User successfully updated.");
+                        deferred.resolve(user);
+                    }
+                });
+            else {
+                deferred.reject('User does not exist.');
+                res.send({
+                    Check : 'yourself before you wreck yourself, fool.',
+                    Um : "maybe you're not authorized to do this.",
+                    Uh : "maybe the user doesn't exist."
+                });
+            }
         });
         return deferred.promise;
     }
