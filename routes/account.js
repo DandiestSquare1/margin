@@ -72,10 +72,11 @@ exports.changePassword = function (req, res) {
 exports.displayById = function (req, res) {
     function findUser() {
         var deferred = Q.defer();
-        User.findOne({ _id : req.param('id') }, function (err, user) {
+        User.findOne({ _id : req.params.id }, function (err, user) {
             if (err)
                 deferred.reject(err);
             deferred.resolve({
+                _id      : user._id,
                 email    : user.email,
                 userName : user.userName,
                 game     : user.game
@@ -93,21 +94,25 @@ exports.displayById = function (req, res) {
 exports.updateById = function (req, res) {
     function updateUser() {
         var deferred = Q.defer();
-        User.findOne({ _id : req.param('id') }, function (err, user) {
+        User.findOne({ _id : req.params.id }, function (err, user) {
             if (err)
                 deferred.reject(err);
-            if (req.query.email)
-                user.email = req.query.email;
-            if (req.query.userName)
-                user.userName = req.query.userName;
-            if (req.query.game)
-                user.game = req.query.game;
+            if (req.body.email)
+                user.email = req.body.email;
+            if (req.body.userName)
+                user.userName = req.body.userName;
+            if (req.body.game) {
+                if (req.body.game.started)
+                    user.game.started = req.body.game.started;
+                if (req.body.game.amount)
+                    user.game.amount = req.body.game.amout;
+            }
             user.save(function (err) {
                 if (err)
-                    throw err;
+                    deferred.reject(err);
                 else {
-                    deferred.resolve(user);
                     console.log("User successfully updated.");
+                    deferred.resolve(user);
                 }
             });
         });
