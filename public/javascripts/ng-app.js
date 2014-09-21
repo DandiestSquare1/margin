@@ -20,7 +20,7 @@ app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.$watch('stockTicker', function () {
         var stockOptions = [];
         if ($scope.stockTicker != '')
-            $.get('/api/stock/' + $scope.stockTicker, function (data) {
+            $http.get('/api/stock/lookup/' + $scope.stockTicker).then(function (data) {
                 _.each(data, function (stock) {
                     stockOptions.push(stock.Symbol);
                 });
@@ -35,4 +35,20 @@ app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
             _.defer(function () { $scope.$apply(); });
         });
     };
+}]);
+
+app.controller('StockCntrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.stock;
+    $scope.build = function (ticker) {
+        if (ticker)
+            $http.get('/api/stock/quote/' + ticker)
+            .success(function (data, status, headers, config) {
+                $scope.stock = data;
+                console.log(data);
+                console.log('Retrieved Stock data.');
+            })
+            .error(function (data, status, headers, config) {
+                console.log('err: ' + status + ', ' + config);
+            });
+    }
 }]);

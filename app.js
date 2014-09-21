@@ -91,7 +91,12 @@ app.post('/user/change_password', account.changePassword);
 app.get('/api/user/:id', account.displayById);
 app.post('/api/user/:id', account.updateById);
 
-app.get('/api/stock/:ticker', stock.displayByTicker);
+// Stock API
+app.get('/api/stock/lookup/:ticker', stock.lookupData);
+app.get('/api/stock/quote/:ticker', stock.quoteData);
+
+app.get('/stock', isLoggedIn, stock.emptyParams);
+app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);
 
 app.get('/sign_out', function (req, res) {
     req.logout();
