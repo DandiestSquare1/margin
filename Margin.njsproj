@@ -39,12 +39,14 @@
     <Compile Include="public\javascripts\main.js" />
     <Compile Include="public\javascripts\ng-app.js" />
     <Compile Include="public\javascripts\require.js" />
+    <Compile Include="public\javascripts\search_autocomplete.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\dashboard.js" />
     <Compile Include="routes\game.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\sign_in.js" />
     <Compile Include="routes\sign_up.js" />
+    <Compile Include="routes\stock.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />

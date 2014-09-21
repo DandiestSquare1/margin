@@ -5,6 +5,10 @@ block content
         h1 Dashboard
         div(ng-show='user.game.started')
             h3 {{user.game.amount | currency : symbol}} in account
+            input(id='stockTicker', type='text', name='stockTicker', placeholder='Stock Ticker, Stock Symbol', ng-model='stockTicker', autocomplete='off', data-provide='typeahead')
         div(ng-hide='user.game.started')
             h3 You haven't started a stock trading game yet.
             a.btn.btn-primary(href='#', ng-click='startGame()') Start Game
+
+block scripts
+    script(src='javascripts/search_autocomplete.js')

@@ -17,6 +17,7 @@ var schedule = require('node-schedule');
 
 var account = require('./routes/account');
 var game = require('./routes/game');
+var stock = require('./routes/stock');
 var sign_up = require('./routes/sign_up');
 var sign_in = require('./routes/sign_in');
 var dashboard = require('./routes/dashboard');
@@ -86,8 +87,11 @@ app.post('/user/forgot_password', account.forgotPassword);
 app.get('/user/change_password', account.changePassword_build);
 app.post('/user/change_password', account.changePassword);
 
+// User API
 app.get('/api/user/:id', account.displayById);
 app.post('/api/user/:id', account.updateById);
+
+app.get('/api/stock/:ticker', stock.displayByTicker);
 
 app.get('/sign_out', function (req, res) {
     req.logout();

@@ -1,5 +1,5 @@
 ﻿var app = angular.module('MarginApp', []);
-        
+
 app.controller('MainCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.user;
     $scope.init = function (id) {
@@ -16,6 +16,18 @@ app.controller('MainCntrl', ['$scope', '$http', function ($scope, $http) {
 }]);
         
 app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.stockTicker = 'GOOG';
+    $scope.$watch('stockTicker', function () {
+        var stockOptions = [];
+        if ($scope.stockTicker != '')
+            $.get('/api/stock/' + $scope.stockTicker, function (data) {
+                _.each(data, function (stock) {
+                    stockOptions.push(stock.Symbol);
+                });
+                console.log(stockOptions);
+                $("#stockTicker").typeahead({ source: stockOptions });
+            });
+    });
     $scope.startGame = function () {
         $scope.$parent.user.game.started = true;
         $http.post('/api/user/' + $scope.$parent.user._id, $scope.$parent.user).then(function () {

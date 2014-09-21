@@ -83,7 +83,7 @@ exports.displayById = function (req, res) {
                     game     : user.game
                 });
             else {
-                deferred.reject('User does not exist.');
+                deferred.reject('API error.');
                 res.send({
                     Check : 'yourself before you wreck yourself, fool.',
                     Um : "maybe you're not authorized to do this.",
@@ -127,7 +127,7 @@ exports.updateById = function (req, res) {
                     }
                 });
             else {
-                deferred.reject('User does not exist.');
+                deferred.reject('API error.');
                 res.send({
                     Check : 'yourself before you wreck yourself, fool.',
                     Um : "maybe you're not authorized to do this.",
