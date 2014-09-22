@@ -6,7 +6,7 @@ var transactionSchema = mongoose.Schema({
     time         : Date,
     amount       : Number,
     price        : Number,
-    user         : { type: Mongoose.Schema.ObjectId, ref: 'User' }
+    user         : { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 
 // create the model for transactions

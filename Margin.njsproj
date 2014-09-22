@@ -35,6 +35,7 @@
     <Compile Include="config\auth.js" />
     <Compile Include="config\mailer.js" />
     <Compile Include="config\token.js" />
+    <Compile Include="models\transaction.js" />
     <Compile Include="models\user.js" />
     <Compile Include="public\javascripts\main.js" />
     <Compile Include="public\javascripts\ng-app.js" />
