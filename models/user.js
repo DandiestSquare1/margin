@@ -3,19 +3,20 @@ var bcrypt = require('bcrypt-nodejs');
 
 // user model
 var userSchema = mongoose.Schema({
-    userName     : String,
-    email        : String,
-    password     : String,
-    confirmed    : { type: Boolean, default: false },
-    game         : {
-        started  : false,
-        amount   : { type: Number, default: 100000 },
-        startedOn: Date
+    userName        : String,
+    email           : String,
+    password        : String,
+    confirmed       : { type: Boolean, default: false },
+    game            : {
+        started     : false,
+        amount      : { type: Number, default: 100000 },
+        startedOn   : Date,
+        transactions: [ { type: Mongoose.Schema.ObjectId, ref: 'Transaction' } ]
     },
-    token        : String,
-    flag         : {
-        state    : { type: Boolean, default: false },
-        token    : { type: String, default: '' }
+    token           : String,
+    flag            : {
+        state       : { type: Boolean, default: false },
+        token       : { type: String, default: '' }
     }
 });
 
