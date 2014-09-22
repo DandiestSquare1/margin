@@ -53,7 +53,13 @@ app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
 app.controller('StockCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.stock;
     $scope.render = function (stock) {
-        $scope.stock = stock;
-        _.defer(function () { $scope.$apply(); });
+        $http.get('http://www.corsproxy.com/dev.markitondemand.com/Api/v2/Quote/json?symbol=' + stock.Symbol)
+        .success(function (data, status, headers, config) {
+            $scope.stock = JSON.parse(data);
+            _.defer(function () { $scope.$apply(); });
+        })
+        .error(function (data, status, headers, config) {
+            console.log('err: ' + status + ', ' + config);
+        });
     }
 }]);
