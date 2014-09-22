@@ -39,7 +39,7 @@
     <Compile Include="public\javascripts\main.js" />
     <Compile Include="public\javascripts\ng-app.js" />
     <Compile Include="public\javascripts\require.js" />
-    <Compile Include="public\javascripts\search_autocomplete.js" />
+    <Compile Include="public\javascripts\typeahead.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\dashboard.js" />
     <Compile Include="routes\game.js" />
@@ -48,6 +48,7 @@
     <Compile Include="routes\sign_up.js" />
     <Compile Include="routes\stock.js" />
     <Content Include="package.json" />
+    <Content Include="public\images\favicon.png" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
     <Content Include="views\change_password.jade" />

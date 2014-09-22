@@ -20,12 +20,25 @@ app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.$watch('stockTicker', function () {
         var stockOptions = [];
         if ($scope.stockTicker != '')
-            $http.get('/api/stock/lookup/' + $scope.stockTicker).then(function (data) {
+            $http.get('/api/stock/lookup/' + $scope.stockTicker)
+            .success(function (data, status, headers, config) {
+                console.log(data);
                 _.each(data, function (stock) {
                     stockOptions.push(stock.Symbol);
                 });
-                console.log(stockOptions);
-                $("#stockTicker").typeahead({ source: stockOptions });
+                //console.log(stockOptions);
+                $('#stock-ticker').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                }, {
+                    name: 'stockOptions',
+                    displayKey: 'value',
+                    source: stockOptions
+                });
+            })
+            .error(function (data, status, headers, config) {
+                console.log('err: ' + status + ', ' + config);
             });
     });
     $scope.startGame = function () {
@@ -39,16 +52,8 @@ app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
 
 app.controller('StockCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.stock;
-    $scope.build = function (ticker) {
-        if (ticker)
-            $http.get('/api/stock/quote/' + ticker)
-            .success(function (data, status, headers, config) {
-                $scope.stock = data;
-                console.log(data);
-                console.log('Retrieved Stock data.');
-            })
-            .error(function (data, status, headers, config) {
-                console.log('err: ' + status + ', ' + config);
-            });
+    $scope.render = function (stock) {
+        $scope.stock = stock;
+        _.defer(function () { $scope.$apply(); });
     }
 }]);

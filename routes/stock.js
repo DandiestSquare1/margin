@@ -8,8 +8,12 @@ exports.lookupData = function (req, res) {
             request('http://dev.markitondemand.com/Api/v2/Lookup/json?input=' + req.params.ticker, function (err, resp, body) {
                 if (err)
                     deferred.reject(err);
-                if (resp.statusCode == 200)
-                    deferred.resolve(body);
+                if (resp) {
+                    if (resp.statusCode == 200)
+                        deferred.resolve(body);
+                } else
+                    deferred.reject({ error: 'Empty params' });
+
             });
         else
             deferred.reject({ error: 'Empty params' });
@@ -27,8 +31,11 @@ exports.quoteData = function (req, res) {
             request('http://dev.markitondemand.com/Api/v2/Quote/json?symbol=' + req.params.ticker, function (err, resp, body) {
                 if (err)
                     deferred.reject(err);
-                if (resp.statusCode == 200)
-                    deferred.resolve(body);
+                if (resp) {
+                    if (resp.statusCode == 200)
+                        deferred.resolve(body);
+                } else
+                    deferred.reject({ error: 'Empty params' });
             });
         else
             deferred.reject({ error: 'Empty params' });
@@ -40,14 +47,29 @@ exports.quoteData = function (req, res) {
 };
 
 exports.displayByTicker = function (req, res) {
-    res.render('stock', {
-        title: 'Margin',
-        uid: req.user._id,
-        ticker: req.params.ticker,
-        message: {
-            notice: req.flash('notice'),
-            warning: req.flash('warn')
-        }
+    function getStockData() {
+        var deferred = Q.defer();
+        request('http://dev.markitondemand.com/Api/v2/Quote/json?symbol=' + req.params.ticker, function (err, resp, body) {
+            if (err)
+                deferred.reject(err);
+            if (resp) {
+                if (resp.statusCode == 200)
+                    deferred.resolve(JSON.parse(body));
+            } else
+                deferred.reject({ error: 'Empty params' });
+        });
+        return deferred.promise;
+    }
+    getStockData().then(function (data) {
+        res.render('stock', {
+            title: 'Margin',
+            uid: req.user._id,
+            stock: data,
+            message: {
+                notice: req.flash('notice'),
+                warning: req.flash('warn')
+            }
+        });
     });
 };
 

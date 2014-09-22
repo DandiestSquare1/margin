@@ -1,6 +1,6 @@
 ﻿extends layout
 
 block content
-    div(ng-controller='StockCntrl' ng-init='ticker = #{JSON.stringify(ticker)}; build(ticker);')
+    div(ng-controller='StockCntrl' ng-init='stock = #{JSON.stringify(stock)}; render(stock);')
         h1 {{stock.Name}} ({{stock.Symbol}})
         h2 {{stock.LastPrice | currency : symbol}}

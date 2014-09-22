@@ -1,6 +1,11 @@
 ﻿extends layout
 
 block content
+    block flash
+        if (message.notice.length > 0)
+            p= message.notice
+        if (message.warning.length > 0)
+            p= message.warning
     div(ng-controller='DashCntrl')
         h1 Dashboard
         div(ng-hide='user.game.started')
@@ -12,4 +17,4 @@ block content
             a.btn.btn-primary(ng-href='/stock/{{stockTicker}}') Quote
 
 block scripts
-    script(src='javascripts/search_autocomplete.js')
+    script(src='javascripts/typeahead.js')
