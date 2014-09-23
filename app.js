@@ -84,6 +84,10 @@ app.post('/sign_in', passport.authenticate('local-login', {
 
 app.get('/dashboard', isLoggedIn, dashboard.build);
 
+// User API
+app.get('/api/user/:id', api.user.displayById);
+app.post('/api/user/:id', api.user.updateById);
+
 // user confirmation and password changes
 app.get('/user/force_confirm', account.forceConfirmation);
 app.get('/user/confirm', account.confirm);
@@ -91,10 +95,6 @@ app.get('/user/forgot_password', account.forgotPassword_build);
 app.post('/user/forgot_password', account.forgotPassword);
 app.get('/user/change_password', account.changePassword_build);
 app.post('/user/change_password', account.changePassword);
-
-// User API
-app.get('/api/user/:id', api.user.displayById);
-app.post('/api/user/:id', api.user.updateById);
 
 // Stock API
 app.get('/api/stock/lookup/:ticker', api.stock.lookupData);

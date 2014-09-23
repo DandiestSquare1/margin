@@ -1,6 +1,8 @@
-﻿var app = angular.module('MarginApp', []);
+﻿'use strict';
 
-app.controller('MainCntrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('MarginApp.controllers', [])
+
+.controller('MainCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.user;
     $scope.init = function (id) {
         if (id)
@@ -12,9 +14,9 @@ app.controller('MainCntrl', ['$scope', '$http', function ($scope, $http) {
                 console.log('err: ' + status + ', ' + config);
             });
     };
-}]);
-        
-app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
+}])
+
+.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.stockTicker = 'GOOG';
     $scope.$watch('stockTicker', function () {
         var stockOptions = [];
@@ -47,18 +49,18 @@ app.controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
             _.defer(function () { $scope.$apply(); });
         });
     };
-}]);
+}])
 
-app.controller('StockCntrl', ['$scope', '$http', function ($scope, $http) {
+.controller('StockCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.stock;
     $scope.render = function (ticker) {
         $http.get('http://www.corsproxy.com/dev.markitondemand.com/Api/v2/Quote/json?symbol=' + ticker)
         .success(function (data, status, headers, config) {
-             $scope.stock = data;
-             _.defer(function () { $scope.$apply(); });
+            $scope.stock = data;
+            _.defer(function () { $scope.$apply(); });
         })
         .error(function (data, status, headers, config) {
-             console.log('err: ' + status + ', ' + config);
+            console.log('err: ' + status + ', ' + config);
         });
     }
 }]);
