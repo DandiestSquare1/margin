@@ -41,24 +41,25 @@
     <Compile Include="public\javascripts\ng-app.js" />
     <Compile Include="public\javascripts\require.js" />
     <Compile Include="public\javascripts\typeahead.js" />
-    <Compile Include="routes\account.js" />
+    <Compile Include="routes\account\account.js" />
+    <Compile Include="routes\account\sign_in.js" />
+    <Compile Include="routes\account\sign_up.js" />
+    <Compile Include="routes\api\stock_api.js" />
+    <Compile Include="routes\api\user_api.js" />
     <Compile Include="routes\dashboard.js" />
-    <Compile Include="routes\game.js" />
     <Compile Include="routes\index.js" />
-    <Compile Include="routes\sign_in.js" />
-    <Compile Include="routes\sign_up.js" />
     <Compile Include="routes\stock.js" />
     <Content Include="package.json" />
     <Content Include="public\images\favicon.png" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
-    <Content Include="views\change_password.jade" />
+    <Content Include="views\account\change_password.jade" />
+    <Content Include="views\account\forgot_password.jade" />
+    <Content Include="views\account\sign_in.jade" />
+    <Content Include="views\account\sign_up.jade" />
     <Content Include="views\dashboard.jade" />
-    <Content Include="views\forgot_password.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
-    <Content Include="views\sign_in.jade" />
-    <Content Include="views\sign_up.jade" />
     <Content Include="views\stock.jade" />
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +70,10 @@
     <Folder Include="public\javascripts\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
+    <Folder Include="routes\account\" />
+    <Folder Include="routes\api\" />
     <Folder Include="views\" />
+    <Folder Include="views\account\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
   <ProjectExtensions>

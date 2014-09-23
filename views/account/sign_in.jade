@@ -1,12 +1,13 @@
-﻿extends layout
+﻿extends ../layout
 
 block content
-    h1 Forgot Password
+    h1 Sign In
     block flash
         if (message.notice.length > 0)
             p= message.notice
         if (message.warning.length > 0)
             p= message.warning
-    form(action='forgot_password', method='post')
+    form(action='sign_in', method='post')
         input(type='email', name='email', placeholder='Email')
-        button(type='submit') Proceed
+        input(type='password', name='password', placeholder='Password')
+        button(type='submit') Sign In

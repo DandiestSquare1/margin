@@ -16,12 +16,17 @@ var User = require('./models/user');
 var auth = require('./config/auth.js')(passport);
 var schedule = require('node-schedule');
 
-var account = require('./routes/account');
-var game = require('./routes/game');
-var stock = require('./routes/stock');
-var sign_up = require('./routes/sign_up');
-var sign_in = require('./routes/sign_in');
+var account = require('./routes/account/account');
+var sign_up = require('./routes/account/sign_up');
+var sign_in = require('./routes/account/sign_in');
 var dashboard = require('./routes/dashboard');
+var stock = require('./routes/stock');
+
+// api routes
+var api = {
+    user : require('./routes/api/user_api'),
+    stock: require('./routes/api/stock_api')  
+};
 
 var app = express();
 
@@ -34,7 +39,6 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-// required for passport
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'session_secret' }));
 app.use(passport.initialize());
@@ -89,12 +93,12 @@ app.get('/user/change_password', account.changePassword_build);
 app.post('/user/change_password', account.changePassword);
 
 // User API
-app.get('/api/user/:id', account.displayById);
-app.post('/api/user/:id', account.updateById);
+app.get('/api/user/:id', api.user.displayById);
+app.post('/api/user/:id', api.user.updateById);
 
 // Stock API
-app.get('/api/stock/lookup/:ticker', stock.lookupData);
-app.get('/api/stock/quote/:ticker', stock.quoteData);
+app.get('/api/stock/lookup/:ticker', api.stock.lookupData);
+app.get('/api/stock/quote/:ticker', api.stock.quoteData);
 
 app.get('/stock', isLoggedIn, stock.emptyParams);
 app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);

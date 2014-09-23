@@ -4,7 +4,7 @@
 
 exports.createSession = function (req, res) {
     if (!req.user)
-        res.render('sign_in', {
+        res.render('account/sign_in', {
             title: 'Margin',
             message : {
                 notice: req.flash('notice'),
