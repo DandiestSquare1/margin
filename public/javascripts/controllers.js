@@ -28,7 +28,7 @@ angular.module('MarginApp.controllers', [])
                     stockOptions.push(stock.Symbol);
                 });
                 //console.log(stockOptions);
-                $('#stock-ticker').typeahead({
+                /*$('#stock-ticker').typeahead({
                     hint: true,
                     highlight: true,
                     minLength: 1
@@ -36,7 +36,7 @@ angular.module('MarginApp.controllers', [])
                     name: 'stockOptions',
                     displayKey: 'value',
                     source: stockOptions
-                });
+                });*/
             })
             .error(function (data, status, headers, config) {
                 console.log('err: ' + status + ', ' + config);

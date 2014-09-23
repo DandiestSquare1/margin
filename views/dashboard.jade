@@ -15,6 +15,3 @@ block content
             h3 {{user.game.amount | currency : symbol}} in account
             input(id='stockTicker', type='text', name='stockTicker', placeholder='Stock Ticker, Stock Symbol', ng-model='stockTicker', autocomplete='off', data-provide='typeahead')
             a.btn.btn-primary(ng-href='/stock/{{stockTicker}}') Quote
-
-block scripts
-    script(src='javascripts/typeahead.js')

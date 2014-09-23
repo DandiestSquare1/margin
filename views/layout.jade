@@ -27,10 +27,5 @@ html
     .container
         block content
             block flash
-    script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
-    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.1/q.js')
-    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js')
-    script(src='/javascripts/app.js')
+    script(data-main='/javascripts/main', src='/javascripts/require.js')
     block scripts
