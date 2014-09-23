@@ -50,6 +50,7 @@
     <Compile Include="routes\dashboard.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\stock.js" />
+    <Content Include=".gitignore" />
     <Content Include="package.json" />
     <Content Include="public\images\favicon.png" />
     <Content Include="public\stylesheets\style.styl" />
