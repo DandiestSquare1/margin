@@ -4,7 +4,7 @@
 
 exports.createUser = function (req, res) {
     if (!req.user)
-        res.render('/account/sign_up', {
+        res.render('account/sign_up', {
             title: 'Margin',
             message : {
                 notice: req.flash('notice'),
