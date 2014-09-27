@@ -49,7 +49,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // connect to db
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/margin' || 'mongodb://heroku_app30064891:lvb57stabff43hag01jsijp04q@ds039880.mongolab.com:39880/heroku_app30064891');
+mongoose.connect(process.env.MONGOLAB_URI) || 'mongodb://localhost/margin');
 
 /* test scheduler
 var date = new Date(2014, 8, 13, 14, 3, 0, 0);
