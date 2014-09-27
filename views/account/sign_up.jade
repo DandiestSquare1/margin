@@ -7,7 +7,7 @@ block content
             p= message.notice
         if (message.warning.length > 0)
             p= message.warning
-    form(action= '/sign_up', method='post')
+    form(action= 'sign_up', method='post')
         input(type='text', name='userName', placeholder='Username')
         input(type='email', name='email', placeholder='Email')
         input(type='password', name='password', placeholder='Password')

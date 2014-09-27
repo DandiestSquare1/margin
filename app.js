@@ -24,8 +24,9 @@ var stock = require('./routes/stock');
 
 // api routes
 var api = {
-    user : require('./routes/api/user_api'),
-    stock: require('./routes/api/stock_api')  
+    user          : require('./routes/api/user_api'),
+    stock         : require('./routes/api/stock_api'),
+    transaction   : require('./routes/api/transaction_api')
 };
 
 var app = express();
@@ -103,8 +104,8 @@ app.get('/api/stock/quote/:ticker', api.stock.quoteData);
 app.get('/stock', isLoggedIn, stock.emptyParams);
 app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);
 
-//app.get('/api/transaction', isLoggedIn, transaction.displayById);
-//app.post('/api/transaction', isLoggedIn, transaction.create);
+app.get('/api/transaction', isLoggedIn, api.transaction.getData);
+app.post('/api/transaction', isLoggedIn, api.transaction.create);
 
 app.get('/sign_out', function (req, res) {
     req.logout();
