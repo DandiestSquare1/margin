@@ -103,6 +103,9 @@ app.get('/api/stock/quote/:ticker', api.stock.quoteData);
 app.get('/stock', isLoggedIn, stock.emptyParams);
 app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);
 
+app.get('/api/transaction', isLoggedIn, transaction.displayById);
+app.post('/api/transaction', isLoggedIn, transaction.create);
+
 app.get('/sign_out', function (req, res) {
     req.logout();
     res.redirect('/');

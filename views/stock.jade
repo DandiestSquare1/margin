@@ -3,5 +3,12 @@
 block content
     div(ng-controller='StockCntrl' ng-init='ticker = #{JSON.stringify(ticker)}; render(ticker);', ng-show='stock')
         h1 {{stock.Name}} ({{stock.Symbol}})
+        block flash
+            if (message.notice.length > 0)
+                p= message.notice
+            if (message.warning.length > 0)
+                p= message.warning
         h2 {{stock.LastPrice | currency : symbol}}
-        button.btn.btn-primary(href='#') Buy
+        form(action='/stock', method='post')
+            input(type='text', name='amount', placeholder='Number of shares', ng-model='numShares')
+            button.btn.btn-primary(type='submit', href='#') Buy

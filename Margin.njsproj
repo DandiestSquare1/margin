@@ -37,6 +37,7 @@
     <Compile Include="config\token.js" />
     <Compile Include="models\transaction.js" />
     <Compile Include="models\user.js" />
+    <Compile Include="Procfile" />
     <Compile Include="public\javascripts\controllers.js" />
     <Compile Include="public\javascripts\main.js" />
     <Compile Include="public\javascripts\app.js" />

@@ -54,7 +54,7 @@ angular.module('MarginApp.controllers', [])
 .controller('StockCntrl', ['$scope', '$http', function ($scope, $http) {
     $scope.stock;
     $scope.render = function (ticker) {
-        $http.get('http://www.corsproxy.com/dev.markitondemand.com/Api/v2/Quote/json?symbol=' + ticker)
+        $http.get('/api/stock/quote/' + ticker)
         .success(function (data, status, headers, config) {
             $scope.stock = data;
             _.defer(function () { $scope.$apply(); });
