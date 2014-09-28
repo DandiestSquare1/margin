@@ -16,6 +16,7 @@ var User = require('./models/user');
 var auth = require('./config/auth.js')(passport);
 var schedule = require('node-schedule');
 
+var about = require('./routes/about');
 var account = require('./routes/account/account');
 var sign_up = require('./routes/account/sign_up');
 var sign_in = require('./routes/account/sign_in');
@@ -66,6 +67,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+
+app.get('/about', about.explain);
 
 app.get('/sign_up', sign_up.createUser);
 
