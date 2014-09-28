@@ -8,8 +8,8 @@ var userSchema = mongoose.Schema({
     password        : String,
     confirmed       : { type: Boolean, default: false },
     game            : {
-        started     : false,
-        amount      : { type: Number, default: 100000 },
+        started     : { type: Boolean, default: false },
+        amount      : { type: Number, default: 20000 },
         startedOn   : Date,
         transactions: [ { type: mongoose.Schema.ObjectId, ref: 'Transaction' } ]
     },

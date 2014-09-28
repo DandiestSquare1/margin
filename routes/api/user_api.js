@@ -46,7 +46,9 @@ exports.updateById = function (req, res) {
                 if (req.body.game.started)
                     user.game.started = req.body.game.started;
                 if (req.body.game.amount)
-                    user.game.amount = req.body.game.amout;
+                    user.game.amount = req.body.game.amount;
+                if (req.body.game.transaction)
+                    user.game.transactions.push(req.body.game.transaction);
                 user.game.startedOn = Date.now();
             }
             if (user)
