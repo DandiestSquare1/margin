@@ -9,6 +9,6 @@ block content
             if (message.warning.length > 0)
                 p= message.warning
         h2 {{stock.LastPrice | currency : symbol}}
-        form(action='/stock', method='post')
-            input(type='text', name='amount', placeholder='Number of shares', ng-model='numShares')
-            button.btn.btn-primary(type='submit', href='#') Buy
+        h3 Available Assets: {{user.game.amount | currency : symbol}}
+        input(type='number', name='amount', placeholder='Number of shares', ng-model='numShares')
+        button.btn.btn-primary(ng-click='createTransaction()') Buy

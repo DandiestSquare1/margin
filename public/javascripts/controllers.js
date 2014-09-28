@@ -14,6 +14,18 @@ angular.module('MarginApp.controllers', [])
                 console.log('err: ' + status + ', ' + config);
             });
     };
+    $scope.$watch('user.game.amount', function () {
+        if ($scope.user)
+            $http.post('/api/user/' + $scope.user._id, {
+                game : $scope.user.game
+            })
+            .success(function (data, status, headers, config) {
+                console.log('User game-amount successfully updated.');
+            })
+            .error(function (data, status, headers, config) {
+                console.log('err: ' + status + ', ' + config);
+            });
+    });
 }])
 
 .controller('DashCntrl', ['$scope', '$http', function ($scope, $http) {
@@ -62,5 +74,23 @@ angular.module('MarginApp.controllers', [])
         .error(function (data, status, headers, config) {
             console.log('err: ' + status + ', ' + config);
         });
+    }
+    $scope.createTransaction = function () {
+        if ($scope.numShares && $scope.numShares > 0 && $scope.$parent.user.game.amount - ($scope.stock.LastPrice * $scope.numShares) > 0) {
+            $http.post('/api/transaction', {
+                symbol : $scope.stock.Symbol,
+                amount : $scope.numShares,
+                price  : $scope.stock.LastPrice
+            })
+            .success(function (data, status, headers, config) {
+                $scope.$parent.user.game.amount = data.amount;
+            })
+            .error(function (data, status, headers, config) {
+                console.log('err: ' + status + ', ' + config);
+            });
+        } else {
+            console.log($scope.$parent.user.game.amount - ($scope.amount * $scope.numShares) > 0);
+            console.log($scope.amount);
+        }
     }
 }]);
