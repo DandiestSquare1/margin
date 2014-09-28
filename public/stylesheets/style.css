@@ -69,16 +69,17 @@ fieldset[disabled] .btn-default.active {
 .navbar-default * {
   font-family: "Source Sans Pro";
   font-size: 1.5rem;
+  font-weight: 300;
   text-transform: uppercase;
-  color: #d35f5f !important;
+  color: #fff !important;
 }
 .navbar-brand {
   font-family: "High Tower";
-  font-size: 4rem;
+  font-size: 2.75rem;
 }
 .navbar {
-  background-color: #fff;
-  border: 2px solid #fff;
+  background-color: #d35f5f;
+  border: 2px solid #d35f5f;
   border-radius: 0;
 }
 body {
@@ -87,13 +88,23 @@ body {
 .backit {
   background-color: #d35f5f;
 }
-h1.title {
+.backit h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  color: #fff;
+}
+h1.intro-title {
   font-family: "High Tower";
   font-size: 30rem;
   color: #fff;
   margin-top: 8rem;
 }
-h2.subtitle {
+h2.intro-subtitle {
   font-family: "Open Sans";
   font-weight: 300;
   font-size: 4rem;

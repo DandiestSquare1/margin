@@ -16,6 +16,12 @@ html
                     span.icon-bar
                 a.navbar-brand(href='/') M
             .navbar-collapse.collapse
+                ul.nav.navbar-nav.navbar-left(ng-show='uid')
+                    li
+                        a(href='/dashboard') Dashboard
+                ul.nav.navbar-nav.navbar-left(ng-hide='uid')
+                    li
+                        a(href='/about') About
                 ul.nav.navbar-nav.navbar-right(ng-show='uid')
                     li
                         a(href='/sign_out') Sign Out

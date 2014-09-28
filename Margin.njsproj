@@ -71,7 +71,6 @@
     <Content Include="views\account\forgot_password.jade" />
     <Content Include="views\account\sign_in.jade" />
     <Content Include="views\account\sign_up.jade" />
-    <Content Include="views\construct.jade" />
     <Content Include="views\dashboard.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
