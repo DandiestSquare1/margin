@@ -1,4 +1,4 @@
-﻿extends layout
+﻿extends construct
 
 block content
     block flash
@@ -6,3 +6,12 @@ block content
             p= message.notice
         if (message.warning.length > 0)
             p= message.warning
+    h1.title.text-center.animated.fadeInDown M
+    h2.subtitle.text-center Better investing.
+    div.intro-btns
+        a(href='/about')
+            button.join.btn.btn-default Learn More
+        a(href='/sign_up')
+            button.join.btn.btn-default Join Program
+    div.push
+        a.supplement(href='/sign_in') or Sign In

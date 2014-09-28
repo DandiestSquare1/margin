@@ -1,12 +1,56 @@
-﻿@font-face {
-    font-family: 'High Tower';
+﻿@import "animate.min.css"
+
+@font-face {
+    font-family: "High Tower";
     src: url('fonts/htowert-webfont.eot');
     src: url('fonts/htowert-webfont.eot?#iefix') format('embedded-opentype'),
          url('fonts/htowert-webfont.woff2') format('woff2'),
          url('fonts/htowert-webfont.woff') format('woff'),
          url('fonts/htowert-webfont.ttf') format('truetype'),
-         url('fonts/htowert-webfont.svg#high_tower_textregular') format('svg');
+		 url('fonts/htowert-webfont.svg#high_tower_textregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400');
+
+base = #D35F5F
+
+@import "overrides"
+
+body
+	background-color transparent
+
+.backit
+	background-color base
+
+h1.title
+	font-family "High Tower"
+	font-size 30rem
+	color white
+	margin-top 8rem
+
+h2.subtitle
+	font-family "Open Sans"
+	font-weight 300
+	font-size 4rem
+	color white
+	margin-top -2rem
+
+.intro-btns
+	text-align center
+	margin-top 5rem
+	button.join:first-child
+		margin-right 1rem
+
+div.push
+	text-align center
+	a.supplement
+		display block
+		font-family "Open Sans"
+		font-weight 1rem
+		color white
+		margin-top 2rem
+	a.supplement:hover,
+	a.supplement:focus
+		margin-left auto
+		margin-right auto
+		color white

@@ -1,0 +1,20 @@
+﻿doctype html
+html.backit
+  head
+    title= title
+    link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel='stylesheet')
+    link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400|Open+Sans:400,300', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    block styles
+  body(ng-app='MarginApp', ng-controller='MainCntrl', ng-init='uid = #{JSON.stringify(uid)}; init(uid);')
+    .container
+        block content
+            block flash
+    script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.1/q.js')
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js')
+    script(src='/javascripts/app.js')
+    script(src='/javascripts/controllers.js')
+    block scripts
