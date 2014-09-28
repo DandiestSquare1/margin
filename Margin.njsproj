@@ -47,6 +47,7 @@
     <Compile Include="routes\account\sign_in.js" />
     <Compile Include="routes\account\sign_up.js" />
     <Compile Include="routes\api\stock_api.js" />
+    <Compile Include="routes\api\transaction_api.js" />
     <Compile Include="routes\api\user_api.js" />
     <Compile Include="routes\dashboard.js" />
     <Compile Include="routes\index.js" />
