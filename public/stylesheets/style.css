@@ -182,8 +182,6 @@ fieldset[disabled] .btn-primary.active {
 .control-label {
   font-family: "Source Sans Pro";
   font-weight: 300;
-  font-size: 2rem;
-  margin-top: -5px;
 }
 .form-control {
   border-radius: 0;
