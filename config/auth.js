@@ -23,11 +23,6 @@ module.exports = function (passport) {
     },
     function (req, email, password, done) {
         process.nextTick(function () {
-            if (!email)
-                return done(null, false, req.flash('warn', 'Enter an email address.'));
-            if (!password)
-                return done(null, false, req.flash('warn', 'Enter a password.'));
-                res.redirect('/sign_up');
             User.findOne({ 'email' : email }, function (err, user) {
                 if (err)
                     return done(err);
