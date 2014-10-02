@@ -17,7 +17,10 @@ var mailOptions = {
 };
 
 exports.confirmAccount = function (email, token) {
-    var url = 'http://localhost:3000/user/confirm?email=' + email + '&token=' + token;
+    var urlBase = 'localhost:3000'
+    if (process.env.NODE_ENV == 'production')
+        urlBase = 'www.onmargin.org'
+    var url = 'http://' + urlBase + '/user/confirm?email=' + email + '&token=' + token;
     var opts = mailOptions;
     opts.to = email;
     opts.subject = 'Confirm Account at Margin';
@@ -31,7 +34,10 @@ exports.confirmAccount = function (email, token) {
 };
 
 exports.setNewPassword = function (email, token) {
-    var url = 'http://localhost:3000/user/change_password?email=' + email + '&token=' + token;
+    var urlBase = 'localhost:3000'
+    if (process.env.NODE_ENV == 'production')
+        urlBase = 'www.onmargin.org'
+    var url = 'http://' + urlBase + '/user/change_password?email=' + email + '&token=' + token;
     var opts = mailOptions;
     opts.to = email;
     opts.subject = 'Change Password for Margin Account';
