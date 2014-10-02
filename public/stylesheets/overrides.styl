@@ -1,3 +1,11 @@
+a
+	font-family "Open Sans"
+	font-weight 1rem
+	color base
+a:hover,
+a:focus
+	color base
+
 ﻿.btn
 	padding 8px 14px
 	border 2px solid white
@@ -17,7 +25,7 @@
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active,
-.open > .dropdown-toggle.btn-default 
+.open > .dropdown-toggle.btn-default
 	color base
 	background-color white
 	border-color white
@@ -54,9 +62,63 @@ fieldset[disabled] .btn-default.active
 	background-color white
 	border-color white
 
-.btn-default .badge 
+.btn-default .badge
 	color base
 	background-color white
+
+.btn-primary
+	font-family "Source Sans Pro"
+	font-size 1.3rem
+	font-weight 400
+	color white
+	background-color base
+	border-color base
+	transition border-color 0.15s ease-in-out
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary
+	color white
+	background-color base
+	border-color base
+	box-shadow none
+
+.btn-defaulthover,
+.btn-defaultfocus,
+.btn-default.focus,
+.btn-defaultactive,
+.btn-default.active,
+.open > .dropdown-toggle.btn-primary
+	color white
+	background-color base
+	border-color base
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabledhover,
+.btn-primary[disabled]hover,
+fieldset[disabled] .btn-primaryhover,
+.btn-primary.disabledfocus,
+.btn-primary[disabled]focus,
+fieldset[disabled] .btn-primaryfocus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabledactive,
+.btn-primary[disabled]active,
+fieldset[disabled] .btn-primaryactive,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active
+	background-color base
+	border-color base
+
+.btn-primary .badge
+	color white
+	background-color base
 
 .navbar-default *
 	font-family "Source Sans Pro"
@@ -73,3 +135,51 @@ fieldset[disabled] .btn-default.active
 	background-color base
 	border 2px solid base
 	border-radius 0
+
+.alert
+	border 4px solid
+	border-radius 0
+
+.alert-info
+	color #3498db
+	background-color white
+	border-color accent
+
+.panel
+	border solid #ecf0f1 8px
+	border-radius 0
+	box-shadow none
+
+.panel button
+	text-align right
+
+.panel-default > .panel-heading
+	color black
+	background-color white
+	border-color white
+
+.panel-heading
+	font-family "Source Sans Pro"
+
+.panel-title
+	font-size 3.5rem
+	font-weight 300
+	text-align center
+	margin-bottom 6px
+
+.panel-footer
+	background-color white
+
+.control-label
+	font-family "Source Sans Pro"
+	font-weight 300
+	font-size 2rem
+	margin-top -5px
+
+.form-control
+	border-radius 0
+	box-shadow none
+
+.form-control:focus
+	border 2px solid accent
+	box-shadow none

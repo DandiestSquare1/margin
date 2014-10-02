@@ -8,10 +8,6 @@ html.backit
     block styles
   body(ng-app='MarginApp', ng-controller='MainCntrl', ng-init='uid = #{JSON.stringify(uid)}; init(uid);')
     .container
-        if (message.notice.length > 0)
-            p= message.notice
-        if (message.warning.length > 0)
-            p= message.warning
         h1.intro-title.text-center.animated.fadeInDown M
         h2.intro-subtitle.text-center Better investing.
         div.intro-btns

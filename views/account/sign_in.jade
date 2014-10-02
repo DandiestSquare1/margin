@@ -1,13 +1,28 @@
 ﻿extends ../layout
 
 block content
-    h1 Sign In
     block flash
         if (message.notice.length > 0)
-            p= message.notice
+            .alert.alert-info= message.notice
         if (message.warning.length > 0)
-            p= message.warning
-    form(action='sign_in', method='post')
-        input(type='email', name='email', placeholder='Email')
-        input(type='password', name='password', placeholder='Password')
-        button(type='submit') Sign In
+            .alert.alert-info= message.warning
+    .row
+        .col-sm-offset-4.col-sm-5
+            .panel.panel-default
+                .panel-heading
+                    h1.panel-title Sign In
+                .panel-body
+                    form.form-horizontal(action='sign_in', method='post')
+                        .form-group
+                            label.col-sm-3.control-label Email
+                            .col-sm-9
+                                input(type='email', name='email', class='form-control')
+                        .form-group
+                            label.col-sm-3.control-label Password
+                            .col-sm-9
+                                input(type='password', name='password', class='form-control')
+                        .form-group
+                            .col-sm-offset-3
+                                button.btn.btn-primary(type='submit') Sign In
+                .panel-footer
+                    a(href='/sign_up') Don't have an account? Sign up!

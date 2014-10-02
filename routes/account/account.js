@@ -5,7 +5,7 @@ var mailer = require('../../config/mailer');
 exports.forceConfirmation = function (req, res) {
     req.logout();
     req.flash('notice', 'Please confirm your account. An email has been sent to your email address.');
-    res.redirect('/');
+    res.redirect('/sign_in');
 };
 
 exports.confirm = function (req, res) {
@@ -29,7 +29,7 @@ exports.forgotPassword = function (req, res) {
     console.log('Forgotten password gateway used.');
     token.setFlag(req.body.email);
     req.flash('notice', 'An email has been sent to your email address with reset instructions.');
-    res.redirect('/');
+    res.redirect('/sign_in');
 };
 
 exports.changePassword_build = function (req, res) {

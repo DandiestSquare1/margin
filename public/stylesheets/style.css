@@ -6,6 +6,15 @@
   font-weight: normal;
   font-style: normal;
 }
+a {
+  font-family: "Open Sans";
+  font-weight: 1rem;
+  color: #d35f5f;
+}
+a:hover,
+a:focus {
+  color: #d35f5f;
+}
 .btn {
   padding: 8px 14px;
   border: 2px solid #fff;
@@ -66,6 +75,60 @@ fieldset[disabled] .btn-default.active {
   color: #d35f5f;
   background-color: #fff;
 }
+.btn-primary {
+  font-family: "Source Sans Pro";
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #fff;
+  background-color: #d35f5f;
+  border-color: #d35f5f;
+  transition: border-color 0.15s ease-in-out;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #d35f5f;
+  border-color: #d35f5f;
+  box-shadow: none;
+}
+.btn-defaulthover,
+.btn-defaultfocus,
+.btn-default.focus,
+.btn-defaultactive,
+.btn-default.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #d35f5f;
+  border-color: #d35f5f;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabledhover,
+.btn-primary[disabled]hover,
+fieldset[disabled] .btn-primaryhover,
+.btn-primary.disabledfocus,
+.btn-primary[disabled]focus,
+fieldset[disabled] .btn-primaryfocus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabledactive,
+.btn-primary[disabled]active,
+fieldset[disabled] .btn-primaryactive,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #d35f5f;
+  border-color: #d35f5f;
+}
+.btn-primary .badge {
+  color: #fff;
+  background-color: #d35f5f;
+}
 .navbar-default * {
   font-family: "Source Sans Pro";
   font-size: 1.5rem;
@@ -81,6 +144,54 @@ fieldset[disabled] .btn-default.active {
   background-color: #d35f5f;
   border: 2px solid #d35f5f;
   border-radius: 0;
+}
+.alert {
+  border: 4px solid;
+  border-radius: 0;
+}
+.alert-info {
+  color: #3498db;
+  background-color: #fff;
+  border-color: #3498db;
+}
+.panel {
+  border: solid #ecf0f1 8px;
+  border-radius: 0;
+  box-shadow: none;
+}
+.panel button {
+  text-align: right;
+}
+.panel-default > .panel-heading {
+  color: #000;
+  background-color: #fff;
+  border-color: #fff;
+}
+.panel-heading {
+  font-family: "Source Sans Pro";
+}
+.panel-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.panel-footer {
+  background-color: #fff;
+}
+.control-label {
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+  font-size: 2rem;
+  margin-top: -5px;
+}
+.form-control {
+  border-radius: 0;
+  box-shadow: none;
+}
+.form-control:focus {
+  border: 2px solid #3498db;
+  box-shadow: none;
 }
 body {
   background-color: transparent;
@@ -136,4 +247,7 @@ div.push a.supplement:focus {
   margin-left: auto;
   margin-right: auto;
   color: #fff;
+}
+.about h1 {
+  font-size: 5rem;
 }
