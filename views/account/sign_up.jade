@@ -3,9 +3,9 @@
 block content
     block flash
         if (message.notice.length > 0)
-            p= message.notice
+            .alert.alert-info= message.notice
         if (message.warning.length > 0)
-            p= message.warning
+            .alert.alert-info= message.warning
     .row
         .col-sm-offset-4.col-sm-5
             .panel.panel-default
@@ -29,4 +29,4 @@ block content
                             .col-sm-offset-3
                                 button.btn.btn-primary(type='submit') Sign Up
                 .panel-footer
-                    a(href='/sign_up') Already have an account? Sign in!
+                    a(href='/sign_in') Already have an account? Sign in!
