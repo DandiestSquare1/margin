@@ -7,26 +7,26 @@ block content
         if (message.warning.length > 0)
             .alert.alert-info= message.warning
     .row
-        .col-sm-offset-4.col-sm-5
+        .col-sm-offset-3.col-sm-6
             .panel.panel-default
                 .panel-heading
                     h1.panel-title Sign Up
                 .panel-body
                     form.form-horizontal(action= 'sign_up', method='post')
                         .form-group
-                            label.col-sm-3.control-label Username
-                            .col-sm-9
+                            label.col-sm-offset-2.col-sm-2.control-label Username
+                            .col-sm-6
                                 input(type='text', name='userName', class='form-control')
                         .form-group
-                            label.col-sm-3.control-label Email
-                            .col-sm-9
+                            label.col-sm-offset-2.col-sm-2.control-label Email
+                            .col-sm-6
                                 input(type='email', name='email', class='form-control')
                         .form-group
-                            label.col-sm-3.control-label Password
-                            .col-sm-9
+                            label.col-sm-offset-2.col-sm-2.control-label Password
+                            .col-sm-6
                                 input(type='password', name='password', class='form-control')
                         .form-group
-                            .col-sm-offset-3
+                            .col-sm-offset-5
                                 button.btn.btn-primary(type='submit') Sign Up
                 .panel-footer
                     a(href='/sign_in') Already have an account? Sign in!
