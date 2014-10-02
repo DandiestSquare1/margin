@@ -191,6 +191,9 @@ fieldset[disabled] .btn-primary.active {
   border: 2px solid #3498db;
   box-shadow: none;
 }
+.form-group-btn {
+  text-align: center;
+}
 body {
   background-color: transparent;
 }
