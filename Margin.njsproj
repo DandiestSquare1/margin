@@ -42,7 +42,6 @@
     <Compile Include="public\javascripts\main.js" />
     <Compile Include="public\javascripts\app.js" />
     <Compile Include="public\javascripts\require.js" />
-    <Compile Include="public\javascripts\typeahead.js" />
     <Compile Include="routes\about.js" />
     <Compile Include="routes\account\account.js" />
     <Compile Include="routes\account\sign_in.js" />
