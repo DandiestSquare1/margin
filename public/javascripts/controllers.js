@@ -70,6 +70,7 @@ angular.module('MarginApp.controllers', [])
         .success(function (data, status, headers, config) {
             $scope.stock = data;
             _.defer(function () { $scope.$apply(); });
+            $('#buy').attr('max', Math.floor($scope.$parent.user.game.amount / $scope.stock.LastPrice));
         })
         .error(function (data, status, headers, config) {
             console.log('err: ' + status + ', ' + config);

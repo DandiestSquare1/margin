@@ -1,14 +1,18 @@
 ﻿extends layout
 
 block content
-    div(ng-controller='StockCntrl' ng-init='ticker = #{JSON.stringify(ticker)}; render(ticker);', ng-show='stock')
-        h1 {{stock.Name}} ({{stock.Symbol}})
-        block flash
-            if (message.notice.length > 0)
-                p= message.notice
-            if (message.warning.length > 0)
-                p= message.warning
-        h2 {{stock.LastPrice | currency : symbol}}
-        h3 Available Assets: {{user.game.amount | currency : symbol}}
-        input(type='number', name='amount', placeholder='Number of shares', ng-model='numShares')
-        button.btn.btn-primary(ng-click='createTransaction()') Buy
+    div(ng-controller='StockCntrl', ng-init='ticker = #{JSON.stringify(ticker)}; render(ticker);')
+        .loading(ng-hide='stock')
+            p.loading-icon
+                i(class='fa fa-spinner fa-spin')
+        .loaded(ng-show='stock')
+            h1 {{stock.Name}} ({{stock.Symbol}})
+            block flash
+                if (message.notice.length > 0)
+                    p= message.notice
+                if (message.warning.length > 0)
+                    p= message.warning
+            h2 {{stock.LastPrice | currency : symbol}}
+            h3 Available Assets: {{user.game.amount | currency : symbol}}
+            input(id='buy', type='number', min='0', name='amount', placeholder='Number of shares', ng-model='numShares')
+            button.btn.btn-primary(ng-click='createTransaction()') Buy
