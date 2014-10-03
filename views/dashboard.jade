@@ -21,10 +21,10 @@ block content
                         h1.panel-title Portfolio &mdash; 
                             span.gross {{user.game.amount | currency : symbol}}
                     .panel-body
-                        form.form-horizontal
+                        form(method='get').form-horizontal
                             .form-group
                                 label.col-sm-offset-2.col-sm-4.control-label Stock Symbol
                                 .col-sm-2
-                                    input(id='stockTicker', class='form-control', type='text', name='stockTicker', ng-model='stockTicker', autocomplete='off', data-provide='typeahead')
+                                    input(id='stockTicker', class='form-control', type='text', name='stockTicker', ng-model='stockTicker')
                             .form-group.form-group-btn
                                 a.btn.btn-primary(ng-href='/stock/{{stockTicker}}') Search By Symbol

@@ -39,16 +39,6 @@ angular.module('MarginApp.controllers', [])
                 _.each(data, function (stock) {
                     stockOptions.push(stock.Symbol);
                 });
-                //console.log(stockOptions);
-                /*$('#stock-ticker').typeahead({
-                    hint: true,
-                    highlight: true,
-                    minLength: 1
-                }, {
-                    name: 'stockOptions',
-                    displayKey: 'value',
-                    source: stockOptions
-                });*/
             })
             .error(function (data, status, headers, config) {
                 console.log('err: ' + status + ', ' + config);
@@ -61,6 +51,10 @@ angular.module('MarginApp.controllers', [])
             _.defer(function () { $scope.$apply(); });
         });
     };
+    $('#stockTicker').keypress(function (e) {
+        if (e.which == 13)
+            window.location = '/stock/' + $scope.stockTicker;
+    });
 }])
 
 .controller('StockCntrl', ['$scope', '$http', function ($scope, $http) {

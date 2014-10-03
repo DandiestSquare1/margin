@@ -274,3 +274,7 @@ div.push a.supplement:focus {
 .gross {
   color: #3498db;
 }
+.page-title .subheading {
+  font-size: 3rem;
+  color: #3498db;
+}

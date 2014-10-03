@@ -6,7 +6,8 @@ block content
             p.loading-icon
                 i(class='fa fa-spinner fa-spin')
         .loaded(ng-show='stock')
-            h1 {{stock.Name}} ({{stock.Symbol}})
+            h1.page-title.push-down {{stock.Name}} 
+                span.subheading {{stock.Symbol}}
             block flash
                 if (message.notice.length > 0)
                     p= message.notice
