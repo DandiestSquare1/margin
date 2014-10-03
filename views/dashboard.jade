@@ -7,11 +7,20 @@ block content
         if (message.warning.length > 0)
             p= message.warning
     div(ng-controller='DashCntrl')
-        h1 Dashboard
-        div(ng-hide='user.game.started')
+        h1.page-title.push-down Dashboard
+        .row(ng-hide='user.game.started')
             h3 You haven't started a stock trading game yet.
             a.btn.btn-primary(href='#', ng-click='startGame()') Start Game
-        div(ng-show='user.game.started')
-            h3 {{user.game.amount | currency : symbol}} in account
-            input(id='stockTicker', type='text', name='stockTicker', placeholder='Stock Ticker, Stock Symbol', ng-model='stockTicker', autocomplete='off', data-provide='typeahead')
-            a.btn.btn-primary(ng-href='/stock/{{stockTicker}}') Quote
+        .row(ng-show='user.game.started')
+            .panel.panel-default
+                .panel-heading
+                    h1.panel-title Portfolio &mdash; 
+                        span.gross {{user.game.amount | currency : symbol}}
+                .panel-body
+                    form.form-horizontal
+                        .form-group
+                            label.col-sm-offset-2.col-sm-4.control-label Stock Symbol
+                            .col-sm-2
+                                input(id='stockTicker', class='form-control', type='text', name='stockTicker', ng-model='stockTicker', autocomplete='off', data-provide='typeahead')
+                        .form-group.form-group-btn
+                            a.btn.btn-primary(ng-href='/stock/{{stockTicker}}') Search By Symbol
