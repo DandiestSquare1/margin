@@ -2,10 +2,10 @@
 
 // transaction model
 var transactionSchema = mongoose.Schema({
-    symbol       : String,
+    stock        : { type: mongoose.Schema.ObjectId, ref: 'Stock' },
     time         : Date,
     amount       : Number,
-    price        : Number,
+    grossCost    : Number,
     user         : { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 

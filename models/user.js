@@ -11,7 +11,8 @@ var userSchema = mongoose.Schema({
         started     : { type: Boolean, default: false },
         amount      : { type: Number, default: 20000 },
         startedOn   : Date,
-        transactions: [ { type: mongoose.Schema.ObjectId, ref: 'Transaction' } ]
+        transactions: [ { type: mongoose.Schema.ObjectId, ref: 'Transaction' } ],
+        stocks      : [ { type: mongoose.Schema.ObjectId, ref: 'Stock' } ]
     },
     token           : String,
     flag            : {

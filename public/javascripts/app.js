@@ -1,11 +1,11 @@
 ﻿'use strict';
 
-angular.module('MarginApp', ['MarginApp.controllers']);
-
 /*define([
 	'angular',
-	'controllers'
+	'controllers',
 	], function (angular, controllers) {
     // App level module
     return angular.module('MarginApp', ['MarginApp.controllers']);
 });*/
+
+angular.module('MarginApp', ['MarginApp.controllers', 'MarginApp.services', 'MarginApp.directives']);

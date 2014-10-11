@@ -35,13 +35,16 @@
     <Compile Include="config\auth.js" />
     <Compile Include="config\mailer.js" />
     <Compile Include="config\token.js" />
+    <Compile Include="models\stock.js" />
     <Compile Include="models\transaction.js" />
     <Compile Include="models\user.js" />
     <Compile Include="Procfile" />
     <Compile Include="public\javascripts\controllers.js" />
+    <Compile Include="public\javascripts\directives.js" />
     <Compile Include="public\javascripts\main.js" />
     <Compile Include="public\javascripts\app.js" />
     <Compile Include="public\javascripts\require.js" />
+    <Compile Include="public\javascripts\services.js" />
     <Compile Include="routes\about.js" />
     <Compile Include="routes\account\account.js" />
     <Compile Include="routes\account\sign_in.js" />

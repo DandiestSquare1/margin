@@ -15,5 +15,5 @@ block content
                     p= message.warning
             h2 {{stock.LastPrice | currency : symbol}}
             h3 Available Assets: {{user.game.amount | currency : symbol}}
-            input(id='buy', type='number', min='0', name='amount', placeholder='Number of shares', ng-model='numShares')
+            input(max-val="{{maxPossibleShares}}", type='number', min='0', name='amount', placeholder='Number of shares', ng-model='numShares')
             button.btn.btn-primary(ng-click='createTransaction()') Buy
