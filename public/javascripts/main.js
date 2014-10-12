@@ -2,22 +2,22 @@
 
 requirejs.config({
     appDir: ".",
-    baseUrl: "javascripts",
+    baseUrl: "/javascripts",
     paths: {
         'underscore': '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min',
         'jquery': '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min',
         'bootstrap': '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min',
-        'q': '//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.1/q',
+        'Q': '//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.1/q',
         'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min',
         'app': 'app'
     },
     shim: {
         'underscore' : { exports : '_' },
         'jquery' : { exports : '$' },
-        'q' : { exports : 'q' },
+        'q' : { exports : 'Q' },
         'angular' : { exports : 'angular' },
         'bootstrap' : { deps : ['jquery'] },
-        'app' : { deps: ['angular', 'jquery', 'underscore', 'q'] }
+        'app' : { deps: ['angular', 'jquery', 'underscore', 'Q'] }
     }
 });
 
@@ -25,13 +25,13 @@ requirejs.config({
 window.name = "NG_DEFER_BOOTSTRAP!";
 
 require([
+    'angular',
+    'app',
     'underscore',
     'jquery',
     'bootstrap',
-    'q', 
-	'angular',
-	'app'
-], function (_, $, bootstrap, q, angular, app) {    
+    'Q'
+], function (angular, app, _, $, bootstrap, Q) {
     angular.element().ready(function () {
         angular.resumeBootstrap([app['name']]);
     });

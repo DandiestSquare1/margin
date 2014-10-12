@@ -6,7 +6,7 @@ block content
             p.loading-icon
                 i(class='fa fa-spinner fa-spin')
         .loaded(ng-show='stock')
-            h1.page-title.push-down {{stock.Name}} 
+            h1.page-title.push-down {{stock.Name}}
                 span.subheading {{stock.Symbol}}
             block flash
                 if (message.notice.length > 0)
@@ -15,5 +15,5 @@ block content
                     p= message.warning
             h2 {{stock.LastPrice | currency : symbol}}
             h3 Available Assets: {{user.game.amount | currency : symbol}}
-            input(max-val="{{maxPossibleShares}}", type='number', min='0', name='amount', placeholder='Number of shares', ng-model='numShares')
+            input(type='number', min='0', max-val='{{maxPossibleShares}}', name='amount', placeholder='Number of shares', ng-model='numShares')
             button.btn.btn-primary(ng-click='createTransaction()') Buy

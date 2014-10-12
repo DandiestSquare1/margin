@@ -5,7 +5,11 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>ExpressApp7</Name>
     <RootNamespace>ExpressApp7</RootNamespace>
-    <EnvironmentVariables>NODE_ENV=development;MANDRILL_USER=sachan.ganesh@gmail.com;MANDRILL_KEY=b7gEMH5pZFi7GRYyEsDvmg;SALT=12;</EnvironmentVariables>
+    <Environment>NODE_ENV=development
+MANDRILL_USER=sachan.ganesh@gmail.com
+MANDRILL_KEY=b7gEMH5pZFi7GRYyEsDvmg
+SALT=12
+</Environment>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
