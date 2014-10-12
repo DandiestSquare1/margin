@@ -49,6 +49,7 @@ app.use(flash());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 // connect to db
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/margin');

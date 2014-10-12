@@ -1,0 +1,29 @@
+{
+  "name": "Margin",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sachanganesh/Margin",
+  "authors": [
+    "S G <sachan.ganesh@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.26",
+    "bootstrap": "~3.2.0",
+    "jquery": "~2.1.1",
+    "q": "~2.0.2",
+    "underscore": "~1.7.0"
+  },
+  "resolutions": {
+    "q": "1.0.1"
+  }
+}
