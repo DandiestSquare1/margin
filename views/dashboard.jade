@@ -1,13 +1,13 @@
 ﻿extends layout
 
 block content
-    block flash
-        if (message.notice.length > 0)
-            p= message.notice
-        if (message.warning.length > 0)
-            p= message.warning
     div(ng-controller='DashCntrl')
         h1.page-title.push-down Dashboard
+        block flash
+            if (message.notice.length > 0)
+                .alert.alert-info= message.notice
+            if (message.warning.length > 0)
+                .alert.alert-info= message.warning
         .loading(ng-hide='user')
             p.loading-icon
                 i.fa.fa-spinner.fa-spin

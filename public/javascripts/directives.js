@@ -5,7 +5,8 @@ angular.module('MarginApp.directives', [])
         element.bind('keydown keypress', function (event) {
             if (event.which === 13) {
                 $scope.$apply(function () {
-                    window.location = '/stock/' + attrs.enterPress;
+                    if (attrs.enterPress.length > 0)
+                        window.location = '/stock/' + attrs.enterPress;
                     $scope.$eval(attrs.enterPress);
                 });
                 event.preventDefault();

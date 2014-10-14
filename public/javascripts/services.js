@@ -36,17 +36,17 @@ angular.module('MarginApp.services', [])
 .service('StockData', ['$http', function ($http) {
     this.getQuote = function (ticker) {
         var deferred = Q.defer();
-        if (ticker) {
-            $http.get('/api/stock/quote/' + ticker)
-            .success(function (data, status, headers, config) {
+        $http.get('/api/stock/quote/' + ticker)
+        .success(function (data, status, headers, config) {
+            if (data.Symbol)
                 deferred.resolve(data);
-            })
-            .error(function (data, status, headers, config) {
-                deferred.reject(status);
-            });
-        } else {
-            // do something...
-        }
+            else
+                deferred.reject(data);
+                window.location = '/stock?ticker=' + ticker;
+        })
+        .error(function (data, status, headers, config) {
+            deferred.reject(status);
+        });
         return deferred.promise;
     };
 }])

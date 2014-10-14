@@ -11,7 +11,10 @@
 };
 
 exports.emptyParams = function (req, res) {
-    req.flash('notice', 'That symbol does not exist or could not be found.');
+    if (req.query.ticker)
+        req.flash('notice', 'The stock ticker, "' + req.query.ticker + '", does not exist or could not be found.');
+    else
+        req.flash('notice', 'You did not enter a valid stock ticker.');
     res.redirect('/dashboard');
 };
 
