@@ -23,6 +23,9 @@ html
                 ul.nav.navbar-nav.navbar-right(ng-show='uid')
                     li
                         a(href='/sign_out') Sign Out
+                form.navbar-form.navbar-right(method='get')
+                    .form-group
+                        input.form-control.stock-control(enter-press='{{stockTicker}}', type='text', name='stockTicker', ng-model='stockTicker', placeholder='Stock Ticker')
                 p.navbar-text.navbar-right(ng-show='uid') {{user.userName}}
                 ul.nav.navbar-nav.navbar-right(ng-hide='uid')
                     li
