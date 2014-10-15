@@ -20,7 +20,7 @@ angular.module('MarginApp.controllers', ['MarginApp.services'])
     };
 }])
 
-.controller('StockCntrl', ['$scope', '$http', 'User', 'StockData', function ($scope, $http, User, StockData) {
+.controller('StockCntrl', ['$scope', '$http', 'User', 'StockData', 'Socket', function ($scope, $http, User, StockData, Socket) {
     $scope.maxPossibleShares = 1;
     $scope.$watch('stock', function () {
         if ($scope.$parent.user)
@@ -49,5 +49,8 @@ angular.module('MarginApp.controllers', ['MarginApp.services'])
             console.log($scope.$parent.user.game.amount - ($scope.amount * $scope.numShares) > 0);
             console.log($scope.amount);
         }
+    }
+    $scope.updateData = function () {
+        Socket.on('change:$scope.stock.LastPrice')
     }
 }]);

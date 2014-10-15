@@ -40,9 +40,10 @@ angular.module('MarginApp.services', [])
         .success(function (data, status, headers, config) {
             if (data.Symbol)
                 deferred.resolve(data);
-            else
+            else {
                 deferred.reject(data);
                 window.location = '/stock?ticker=' + ticker;
+            }
         })
         .error(function (data, status, headers, config) {
             deferred.reject(status);
@@ -50,12 +51,13 @@ angular.module('MarginApp.services', [])
         return deferred.promise;
     };
 }])
-/*.factory('socket', function ($rootScope) {
+
+.factory('Socket', function ($rootScope) {
     var socket = io.connect();
     return {
         on: function (eventName, callback) {
             socket.on(eventName, function () {
-            var args = arguments;
+                var args = arguments;
                 $rootScope.$apply(function () {
                     callback.apply(socket, args);
                 });
@@ -71,4 +73,4 @@ angular.module('MarginApp.services', [])
             })
         }
     };
-});*/
+});

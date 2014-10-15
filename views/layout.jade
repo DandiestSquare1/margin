@@ -25,7 +25,7 @@ html
                         a(href='/sign_out') Sign Out
                 form.navbar-form.navbar-right(ng-show='uid', method='get')
                     .form-group
-                        input.form-control.stock-control(enter-press='{{stockTicker}}', type='text', name='stockTicker', ng-model='stockTicker', placeholder='Stock Ticker')
+                        input.form-control.stock-control(enter-press='{{stockTicker}}', type='text', name='stockTicker', ng-model='stockTicker', placeholder='Search Symbol')
                 p.navbar-text.navbar-right(ng-show='uid') {{user.userName}}
                 ul.nav.navbar-nav.navbar-right(ng-hide='uid')
                     li
@@ -40,6 +40,7 @@ html
     script(src='/bower_components/underscore/underscore-min.js')
     script(src='/bower_components/q/q.js')
     script(src='/bower_components/angular/angular.min.js')
+    script(src='/bower_components/angular-socket-io/socket.min.js')
     script(src='/javascripts/app.js')
     script(src='/javascripts/controllers.js')
     script(src='/javascripts/services.js')
