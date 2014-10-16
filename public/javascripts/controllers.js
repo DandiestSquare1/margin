@@ -51,6 +51,6 @@ angular.module('MarginApp.controllers', ['MarginApp.services'])
         }
     }
     $scope.updateData = function () {
-        Socket.on('change:$scope.stock.LastPrice')
+        //Socket.on('change:$scope.stock.LastPrice');
     }
 }]);
