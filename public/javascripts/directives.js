@@ -1,4 +1,4 @@
-angular.module('MarginApp.directives', [])
+module.exports = angular.module('MarginApp.directives', [])
 
 .directive('enterPress', function () {
     return function ($scope, element, attrs) {

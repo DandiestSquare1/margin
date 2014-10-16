@@ -1,4 +1,4 @@
-angular.module('MarginApp.services', [])
+module.exports = angular.module('MarginApp.services', [])
 
 .service('User', ['$http', function ($http) {
     this.get = function (id) {

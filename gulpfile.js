@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var server = require('gulp-express');
 var env = require('gulp-env');
 var browserify = require('gulp-browserify');
+var uglify = require('gulp-uglify');
 
 gulp.task('server', function () {
     //start the server at the beginning of the task
@@ -32,4 +33,11 @@ gulp.task('set-env', function () {
     });
 });
 
-gulp.task('default', ['set-env', 'server', 'browserify']);
+gulp.task('compress', function() {
+    gulp.src('public/javascripts/build/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('public/javascripts/build'))
+});
+
+
+gulp.task('default', ['set-env', 'server', 'browserify', 'compress']);

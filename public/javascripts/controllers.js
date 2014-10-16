@@ -1,4 +1,4 @@
-angular.module('MarginApp.controllers', ['MarginApp.services'])
+module.exports = angular.module('MarginApp.controllers', ['MarginApp.services'])
 
 .controller('MainCntrl', ['$scope', '$http', 'User', function ($scope, $http, User) {
     $scope.init = function (id) {
