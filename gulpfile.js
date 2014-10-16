@@ -3,7 +3,7 @@ var server = require('gulp-express');
 var env = require('gulp-env');
 var browserify = require('gulp-browserify');
 
-gulp.task('default', function () {
+gulp.task('server', function () {
     //start the server at the beginning of the task
     server.run({
         file: 'app.js'
@@ -20,7 +20,7 @@ gulp.task('browserify', function() {
           insertGlobals : true,
           debug : !gulp.env.production
         }))
-        .pipe(gulp.dest('public/javascripts'))
+        .pipe(gulp.dest('public/javascripts/build'));
 });
 
 gulp.task('set-env', function () {
@@ -32,4 +32,4 @@ gulp.task('set-env', function () {
     });
 });
 
-gulp.task('default', ['set-env', 'browserify']);
+gulp.task('default', ['set-env', 'server', 'browserify']);
