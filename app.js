@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 // connect to db
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/margin');
+mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI);
 
 /* test scheduler
 var date = new Date(2014, 8, 13, 14, 3, 0, 0);
@@ -72,23 +72,24 @@ app.get('/', routes.index);
 
 app.get('/about', about.explain);
 
-app.get('/sign_up', sign_up.createUser);
+app.get('/dashboard', isLoggedIn, dashboard.build);
 
-app.post('/sign_up', passport.authenticate('local-signup', {
+// User Routes
+app.get('/user/sign_up', sign_up.createUser);
+
+app.post('/user/sign_up', passport.authenticate('local-signup', {
     successRedirect : '/user/force_confirm',
     failureRedirect : '/sign_up',
     failureFlash : true
 }));
 
-app.get('/sign_in', sign_in.createSession);
+app.get('/user/sign_in', sign_in.createSession);
 
-app.post('/sign_in', passport.authenticate('local-login', {
+app.post('/user/sign_in', passport.authenticate('local-login', {
     successRedirect : '/dashboard',
-    failureRedirect : '/sign_in',
+    failureRedirect : '/user/sign_in',
     failureFlash : true
 }));
-
-app.get('/dashboard', isLoggedIn, dashboard.build);
 
 // User API
 app.get('/api/user/:id', api.user.displayById);
@@ -122,7 +123,7 @@ app.get('/sign_out', function (req, res) {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-    res.redirect('/sign_in');
+    res.redirect('/user/sign_in');
 }
 
 http.createServer(app).listen(app.get('port'), function(){

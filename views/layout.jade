@@ -6,6 +6,7 @@ html
     link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400|Open+Sans:400,300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     block styles
+    script(src='/bower_components/angular/angular.min.js')
   body(ng-app='MarginApp', ng-controller='MainCntrl', ng-init='uid = #{JSON.stringify(uid)}; init(uid);')
     .navbar.navbar-default
         .container
@@ -22,22 +23,23 @@ html
                         a(href='/about') About
                 ul.nav.navbar-nav.navbar-right(ng-show='uid')
                     li
-                        a(href='/sign_out') Sign Out
+                        a(href='/user/sign_out') Sign Out
                 form.navbar-form.navbar-right(ng-show='uid', method='get')
                     .form-group
                         input.form-control.stock-control(enter-press='{{stockTicker}}', type='text', name='stockTicker', ng-model='stockTicker', placeholder='Search Symbol')
                 p.navbar-text.navbar-right(ng-show='uid') {{user.userName}}
                 ul.nav.navbar-nav.navbar-right(ng-hide='uid')
                     li
-                        a(href='/sign_up') Sign Up
+                        a(href='/user/sign_up') Sign Up
                     li
-                        a(href='/sign_in') Sign In
+                        a(href='/user/sign_in') Sign In
     .container
         block content
             block flash
     script(src='/bower_components/jquery/dist/jquery.min.js')
     script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
     script(src='/bower_components/underscore/underscore-min.js')
+    script(src='/bower_components/socket.io-client/socket.io.js')
     script(src='/bower_components/q/q.js')
     script(src='/javascripts/build/app.js')
     block scripts

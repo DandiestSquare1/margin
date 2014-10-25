@@ -6,6 +6,7 @@ html.backit
     link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400|Open+Sans:400,300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     block styles
+    script(src='/bower_components/angular/angular.min.js')
   body(ng-app='MarginApp', ng-controller='MainCntrl', ng-init='uid = #{JSON.stringify(uid)}; init(uid);')
     .navbar.navbar-default
         .container
@@ -22,13 +23,13 @@ html.backit
                         a(href='/about') About
                 ul.nav.navbar-nav.navbar-right(ng-show='uid')
                     li
-                        a(href='/sign_out') Sign Out
+                        a(href='/user/sign_out') Sign Out
                 p.navbar-text.navbar-right(ng-show='uid') {{user.userName}}
                 ul.nav.navbar-nav.navbar-right(ng-hide='uid')
                     li
-                        a(href='/sign_up') Sign Up
+                        a(href='/user/sign_up') Sign Up
                     li
-                        a(href='/sign_in') Sign In
+                        a(href='/user/sign_in') Sign In
     .container.about
         .row
             .col-md-12
@@ -48,8 +49,3 @@ html.backit
     script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
     script(src='/bower_components/underscore/underscore-min.js')
     script(src='/bower_components/q/q.js')
-    script(src='/bower_components/angular/angular.min.js')
-    script(src='/javascripts/app.js')
-    script(src='/javascripts/controllers.js')
-    script(src='/javascripts/services.js')
-    script(src='/javascripts/directives.js')
