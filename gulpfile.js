@@ -4,6 +4,15 @@ var env = require('gulp-env');
 var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
 
+gulp.task('set-env', function () {
+    env({
+        file: '/.env',
+        vars: {
+            // overwriting here
+        }
+    });
+});
+
 gulp.task('server', function () {
     //start the server at the beginning of the task
     server.run({
@@ -24,14 +33,6 @@ gulp.task('browserify', function() {
         .pipe(gulp.dest('public/javascripts/build'));
 });
 
-gulp.task('set-env', function () {
-    env({
-        file: '/.env',
-        vars: {
-            // overwriting here
-        }
-    });
-});
 
 gulp.task('compress', function() {
     gulp.src('public/javascripts/build/*.js')
@@ -39,6 +40,6 @@ gulp.task('compress', function() {
         .pipe(gulp.dest('public/javascripts/build'))
 });
 
-gulp.task('heroku:production', ['set-env', 'server', 'browserify', 'compress']);
+gulp.task('heroku:production', ['browserify', 'compress']);
 
 gulp.task('default', ['set-env', 'server', 'browserify', 'compress']);
