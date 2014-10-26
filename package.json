@@ -5,7 +5,7 @@
     "main": "app.js",
     "author": {
         "name": "Sachan Ganesh",
-        "email": ""
+        "email": "me@sachanganesh.com"
     },
     "dependencies": {
         "express": "^3.4.4",
