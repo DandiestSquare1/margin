@@ -39,5 +39,6 @@ gulp.task('compress', function() {
         .pipe(gulp.dest('public/javascripts/build'))
 });
 
+gulp.task('heroku:production', ['set-env', 'server', 'browserify', 'compress']);
 
-gulp.task('default', ['heroku:production', 'set-env', 'server', 'browserify', 'compress', ]);
+gulp.task('default', ['set-env', 'server', 'browserify', 'compress']);
