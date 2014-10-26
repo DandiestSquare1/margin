@@ -32,7 +32,6 @@
     "gulp-browserify": "^0.5.0"
   },
   "scripts": {
-    "start": "node app",
-    "postinstall": "gulp install && gulp default"
+    "start": "node app"
   }
 }
