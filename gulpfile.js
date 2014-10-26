@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify');
 gulp.task('server', function () {
     //start the server at the beginning of the task
     server.run({
-        file: 'app.js'
+        file: '/app.js'
     });
 
     //restart the server when file changes
@@ -26,7 +26,7 @@ gulp.task('browserify', function() {
 
 gulp.task('set-env', function () {
     env({
-        file: '.env',
+        file: '/.env',
         vars: {
             // overwriting here
         }
