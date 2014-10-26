@@ -33,6 +33,6 @@
   },
   "scripts": {
     "start": "node app",
-    "postinstall": "node gulp default"
+    "postinstall": "node node_modules/.bin/gulp default"
   }
 }
