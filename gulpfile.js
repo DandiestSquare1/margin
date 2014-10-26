@@ -40,4 +40,4 @@ gulp.task('compress', function() {
 });
 
 
-gulp.task('default', ['heroku:production', 'set-env', 'server', 'browserify', 'compress']);
+gulp.task('default', ['heroku:production', 'set-env', 'server', 'browserify', 'compress', ]);
