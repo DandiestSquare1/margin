@@ -42,7 +42,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
-app.use(express.session({ secret: 'session_secret' }));
+app.use(express.session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -112,7 +112,7 @@ app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);
 app.get('/api/transaction', isLoggedIn, api.transaction.getData);
 app.post('/api/transaction', isLoggedIn, api.transaction.create);
 
-app.get('/sign_out', function (req, res) {
+app.get('/user/sign_out', function (req, res) {
     req.logout();
     res.redirect('/');
 });
