@@ -14,7 +14,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = require('./models/user');
 var auth = require('./config/auth.js')(passport);
-var schedule = require('node-schedule');
+var CronJob = require('cron').CronJob;
 
 var about = require('./routes/about');
 var account = require('./routes/account/account');
@@ -53,13 +53,6 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 // connect to db
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI);
-
-/* test scheduler
-var date = new Date(2014, 8, 13, 14, 3, 0, 0);
-var j = schedule.scheduleJob(date, function () {
-    console.log('Scheduler worked!');
-});*/
-
 
 
 // development only
@@ -125,6 +118,6 @@ function isLoggedIn(req, res, next) {
     res.redirect('/user/sign_in');
 }
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(app.get('port'), function() {
+    console.log('Express server listening on port ' + app.get('port'));
 });

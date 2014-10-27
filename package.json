@@ -1,36 +1,36 @@
 {
-    "name": "Margin",
-    "version": "0.0.0",
-    "description": "Margin",
-    "main": "app.js",
-    "author": {
-        "name": "Sachan Ganesh",
-        "email": "me@sachanganesh.com"
-    },
-    "dependencies": {
-        "express": "^3.4.4",
-        "jade": "*",
-        "stylus": "*",
-        "serve-favicon": "*",
-        "request": "*",
-        "q": "*",
-        "passport": "*",
-        "passport-local": "*",
-        "connect-flash": "*",
-        "mongoose": "3.8.16",
-        "bcrypt-nodejs": "*",
-        "node-schedule": "*",
-        "nodemailer": "*",
-        "nodemailer-smtp-transport": "*",
-        "gulp": "^3.8.8",
-        "gulp-env": "^0.2.0",
-        "gulp-util": "^3.0.1",
-        "gulp-express": "^0.1.0",
-        "gulp-browserify": "^0.5.0",
-        "gulp-uglify": "^1.0.1"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "start": "node app.js"
-    }
+  "name": "Margin",
+  "version": "0.0.0",
+  "description": "Margin",
+  "main": "app.js",
+  "author": {
+    "name": "Sachan Ganesh",
+    "email": "me@sachanganesh.com"
+  },
+  "dependencies": {
+    "express": "^3.4.4",
+    "jade": "*",
+    "stylus": "*",
+    "serve-favicon": "*",
+    "request": "*",
+    "q": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "connect-flash": "*",
+    "mongoose": "3.8.16",
+    "bcrypt-nodejs": "*",
+    "cron": "^1.0.5",
+    "nodemailer": "*",
+    "nodemailer-smtp-transport": "*",
+    "gulp": "^3.8.8",
+    "gulp-env": "^0.2.0",
+    "gulp-util": "^3.0.1",
+    "gulp-express": "^0.1.0",
+    "gulp-browserify": "^0.5.0",
+    "gulp-uglify": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  }
 }
