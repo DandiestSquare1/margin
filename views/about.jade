@@ -1,52 +1,52 @@
 ﻿doctype html
 html.backit
-  head
-    title= title
-    link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel='stylesheet')
-    link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400|Open+Sans:400,300', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    block styles
-    script(src='/bower_components/angular/angular.min.js')
-  body(ng-app='MarginApp', ng-controller='MainCntrl', ng-init='uid = #{JSON.stringify(uid)}; init(uid);')
-    .navbar.navbar-default
-        .container
-            .navbar-header
-                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-                a.navbar-brand(href='/', ng-hide='uid') M
-                a.navbar-brand(href='/dashboard', ng-show='uid') M
-            .navbar-collapse.collapse
-                ul.nav.navbar-nav.navbar-left(ng-hide='uid')
-                    li
-                        a(href='/about') About
-                ul.nav.navbar-nav.navbar-right(ng-show='uid')
-                    li
-                        a(href='/user/sign_out') Sign Out
-                p.navbar-text.navbar-right(ng-show='uid') {{user.userName}}
-                ul.nav.navbar-nav.navbar-right(ng-hide='uid')
-                    li
-                        a(href='/user/sign_up') Sign Up
-                    li
-                        a(href='/user/sign_in') Sign In
-    .container.about
-        .row
-            .col-md-12
-                h1 What is Margin?
-                p Example text
-        .row
-            .col-md-6
-                h2 Why use Margin?
-                p Example text
-            .col-md-6
-                h2 How does it work?
-                p Example text
-        .row
-            .col-md-6
-                h1 Some other title
-    script(src='/bower_components/jquery/dist/jquery.min.js')
-    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
-    script(src='/bower_components/underscore/underscore-min.js')
-    script(src='/bower_components/q/q.js')
-    script(src='/javascripts/build/app.js')
+    head
+        title= title
+        link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel='stylesheet')
+        link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400|Open+Sans:400,300', rel='stylesheet', type='text/css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        block styles
+        script(src='/bower_components/angular/angular.min.js')
+    body(ng-app='MarginApp', ng-controller='MainCntrl', ng-init='uid = #{JSON.stringify(uid)}; init(uid);')
+        .navbar.navbar-default
+            .container
+                .navbar-header
+                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/', ng-hide='uid') M
+                    a.navbar-brand(href='/dashboard', ng-show='uid') M
+                .navbar-collapse.collapse
+                    ul.nav.navbar-nav.navbar-left(ng-hide='uid')
+                        li
+                            a(href='/about') About
+                    ul.nav.navbar-nav.navbar-right(ng-show='uid')
+                        li
+                            a(href='/user/sign_out') Sign Out
+                    p.navbar-text.navbar-right(ng-show='uid') {{user.userName}}
+                    ul.nav.navbar-nav.navbar-right(ng-hide='uid')
+                        li
+                            a(href='/user/sign_up') Sign Up
+                        li
+                            a(href='/user/sign_in') Sign In
+        .container.about
+            .row
+                .col-md-12
+                    h1 What is Margin?
+                    p Example text
+            .row
+                .col-md-6
+                    h2 Why use Margin?
+                    p Example text
+                .col-md-6
+                    h2 How does it work?
+                    p Example text
+            .row
+                .col-md-6
+                    h1 Some other title
+        script(src='/bower_components/jquery/dist/jquery.min.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+        script(src='/bower_components/underscore/underscore-min.js')
+        script(src='/bower_components/q/q.js')
+        script(src='/javascripts/build/app.js')

@@ -54,6 +54,9 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 // connect to db
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI);
 
+new CronJob('00 30 9 * * 1-5', function(){
+    console.log('Processing stock orders...');
+}, null, true, "America/New_York");
 
 // development only
 if ('development' == app.get('env')) {

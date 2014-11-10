@@ -50,7 +50,4 @@ module.exports = angular.module('MarginApp.controllers', ['MarginApp.services'])
             console.log($scope.amount);
         }
     }
-    Socket.on('change:price', function (data) {
-        // do something...
-    });
 }]);

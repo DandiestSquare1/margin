@@ -16,7 +16,7 @@ gulp.task('set-env', function () {
 gulp.task('server', function () {
     //start the server at the beginning of the task
     server.run({
-        file: '/app.js'
+        file: 'app.js'
     });
 
     //restart the server when file changes
