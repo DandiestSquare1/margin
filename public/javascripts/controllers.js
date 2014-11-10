@@ -20,7 +20,7 @@ module.exports = angular.module('MarginApp.controllers', ['MarginApp.services'])
     };
 }])
 
-.controller('StockCntrl', ['$scope', '$http', 'User', 'StockData', 'Socket', function ($scope, $http, User, StockData, Socket) {
+.controller('StockCntrl', ['$scope', '$http', 'User', 'StockData', function ($scope, $http, User, StockData) {
     $scope.maxPossibleShares = 1;
     $scope.$watch('stock', function () {
         if ($scope.$parent.user)
