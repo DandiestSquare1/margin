@@ -4,7 +4,6 @@
 var transactionSchema = mongoose.Schema({
     stock        : { type: mongoose.Schema.ObjectId, ref: 'Stock' },
     time         : Date,
-    amount       : Number,
     grossCost    : Number,
     user         : { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
