@@ -12,6 +12,7 @@
     "jade": "*",
     "stylus": "*",
     "serve-favicon": "*",
+    "method-override": "^2.3.0",
     "request": "*",
     "q": "*",
     "passport": "*",
