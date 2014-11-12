@@ -6,6 +6,7 @@
 var express = require('express');
 var routes = require('./routes');
 var favicon = require('serve-favicon');
+var methodOverride = require('method-override');
 var http = require('http');
 var path = require('path');
 var flash = require('connect-flash');
@@ -40,7 +41,7 @@ app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.methodOverride());
+app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.cookieParser());
 app.use(express.session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
@@ -104,9 +105,9 @@ app.get('/api/stock/quote/:ticker', api.stock.quoteData);
 
 app.get('/stock', isLoggedIn, stock.emptyParams);
 app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);
+app.post('/stock/:ticker', isLoggedIn, api.stock.isBought);
 
 app.get('/api/transaction', isLoggedIn, api.transaction.getData);
-app.post('/api/transaction', isLoggedIn, api.transaction.create);
 
 app.get('/user/sign_out', function (req, res) {
     req.logout();
