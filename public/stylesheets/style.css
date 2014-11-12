@@ -289,3 +289,23 @@ div.push a.supplement:focus {
   font-size: 3rem;
   color: #3498db;
 }
+.panel-body h2 {
+  font-family: "Open Sans";
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+.panel-body h2 .stockPrice {
+  color: #3498db;
+}
+.panel-body h3 {
+  font-family: "Open Sans";
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+.panel-body h3 .currentAssets {
+  color: #3498db;
+}
+.panel-body h2,
+.panel-body h3 {
+  text-align: center;
+}
