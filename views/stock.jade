@@ -13,7 +13,24 @@ block content
                     p= message.notice
                 if (message.warning.length > 0)
                     p= message.warning
-            h2 {{stock.LastPrice | currency : symbol}}
-            h3 Available Assets: {{user.game.amount | currency : symbol}}
-            input(type='number', min='0', max-val='{{maxPossibleShares}}', name='amount', placeholder='Number of shares', ng-model='numShares')
-            button.btn.btn-primary(ng-click='createTransaction()') Buy
+            .row
+                .panel.panel-default
+                    .panel-heading
+                        h1.panel-title The Numbers
+                    .panel-body
+                        h2 Current Price &mdash; 
+                            span.stockPrice {{stock.LastPrice | currency}}
+                        h3 Available Assets &mdash; 
+                            span.currentAssets {{assets | currency}}
+            .row
+                .panel.panel-default
+                    .panel-heading
+                        h1.panel-title Purchase Shares
+                    .panel-body
+                        form.form-horizontal(method='post')
+                            .form-group
+                                label.col-sm-4.control-label Number of Shares
+                                .col-sm-4
+                                    input.form-control(type='number', name='numberOfShares', min='0', max-val='{{maxPossibleShares}}', ng-model='numShares')
+                            .form-group.form-group-btn
+                                button.btn.btn-primary(type='submit') Purchase
