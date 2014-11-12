@@ -20,7 +20,7 @@ gulp.task('server', function () {
     });
 
     //restart the server when file changes
-    gulp.watch(['app.js', 'routes/**/*.js'], [server.run]);
+    gulp.watch(['app.js', 'routes/**/*.js', 'public/javascripts/*.js'], [server.run]);
 });
 
 gulp.task('browserify', function() {
