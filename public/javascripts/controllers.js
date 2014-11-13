@@ -29,6 +29,7 @@ module.exports = angular.module('MarginApp.controllers', ['MarginApp.services'])
         }
     });
     $scope.render = function (ticker) {
+        $scope.orderPath = '/order/' + ticker;
         StockData.getQuote(ticker).then(function (data) {
             $scope.stock = data;
             _.defer(function () { $scope.$apply(); });

@@ -3,7 +3,7 @@
 // transaction model
 var transactionSchema = mongoose.Schema({
     stock        : { type: mongoose.Schema.ObjectId, ref: 'Stock' },
-    time         : Date,
+    createdOn    : Date,
     grossCost    : Number,
     user         : { type: mongoose.Schema.ObjectId, ref: 'User' }
 });

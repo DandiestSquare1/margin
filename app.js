@@ -91,6 +91,8 @@ app.post('/user/sign_in', passport.authenticate('local-login', {
 app.get('/api/user/:id', api.user.displayById);
 app.post('/api/user/:id', api.user.updateById);
 
+app.post('/order/:ticker', api.user.processOrder);
+
 // user confirmation and password changes
 app.get('/user/force_confirm', account.forceConfirmation);
 app.get('/user/confirm', account.confirm);
@@ -104,10 +106,12 @@ app.get('/api/stock/lookup/:ticker', api.stock.lookupData);
 app.get('/api/stock/quote/:ticker', api.stock.quoteData);
 
 app.get('/stock', isLoggedIn, stock.emptyParams);
+app.post('/stock', isLoggedIn, api.stock.createNew);
 app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);
-app.post('/stock/:ticker', isLoggedIn, api.stock.isBought);
 
+// Transaction API
 app.get('/api/transaction', isLoggedIn, api.transaction.getData);
+app.post('/api/transaction', isLoggedIn, api.transaction.createNew);
 
 app.get('/user/sign_out', function (req, res) {
     req.logout();

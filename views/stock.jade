@@ -10,9 +10,9 @@ block content
                 span.subheading {{stock.Symbol}}
             block flash
                 if (message.notice.length > 0)
-                    p= message.notice
+                    .alert.alert-info= message.notice
                 if (message.warning.length > 0)
-                    p= message.warning
+                    .alert.alert-info= message.warning
             .row
                 .panel.panel-default
                     .panel-heading
@@ -27,10 +27,14 @@ block content
                     .panel-heading
                         h1.panel-title Purchase Shares
                     .panel-body
-                        form.form-horizontal(method='post')
+                        form.form-horizontal(action='{{orderPath}}', method='post')
+                            .form-group
+                                label.col-sm-4.control-label Stock Symbol
+                                .col-sm-4
+                                    input.form-control(type='text', name='symbol', value='{{stock.Symbol}}' disabled)
                             .form-group
                                 label.col-sm-4.control-label Number of Shares
                                 .col-sm-4
-                                    input.form-control(type='number', name='numberOfShares', min='0', max-val='{{maxPossibleShares}}', ng-model='numShares')
+                                    input.form-control(type='number', name='numberOfShares', value='0', min='0', max-val='{{maxPossibleShares}}', ng-model='numShares')
                             .form-group.form-group-btn
                                 button.btn.btn-primary(type='submit') Purchase

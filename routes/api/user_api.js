@@ -1,4 +1,5 @@
 ﻿var Q = require('q');
+var request = require('request');
 var User = require('../../models/user');
 
 exports.displayById = function (req, res) {
@@ -76,4 +77,28 @@ exports.updateById = function (req, res) {
     }, function (err) {
         console.log(err);
     });
+};
+
+exports.processOrder = function (req, res) {
+    var order, stock;
+    request.post({
+        url: 'http://' + req.get('host') + '/stock',
+        form: {
+            symbol: req.params.ticker,
+            numberOfShares: req.body.numberOfShares
+        }
+    }, function(err, resp, body){
+        console.log(body || err);
+    });
+
+/*
+
+
+    req.user.game.stocks.push(newStock);
+    req.user.game.transactions.push(newTransaction);
+    req.user.game.amount = req.user.game.amount - newTransaction.grossCost;
+    req.user.save(function (err) {
+        if (err)
+            console.log(err);
+    });*/
 };

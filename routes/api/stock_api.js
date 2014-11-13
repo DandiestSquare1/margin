@@ -3,59 +3,6 @@ var request = require('request');
 var Stock = require('../../models/stock');
 var Transaction = require('../../models/transaction');
 
-exports.lookupData = function (req, res) {
-    callAPI(req, "Lookup").then(function (data) {
-        res.json(JSON.parse(data));
-    });
-};
-
-exports.quoteData = function (req, res) {
-    callAPI(req, "Quote").then(function (data) {
-        res.json(JSON.parse(data));
-    });
-};
-
-exports.isBought = function (req, res) {
-    var newTransaction, newStock;
-    if (req.body.numberOfShares && req.body.numberOfShares > 0) {
-        newTransaction = new Transaction();
-        newStock = new Stock();
-        newStock.symbol = req.params.ticker;
-        newStock.amount = req.body.numberOfShares;
-        newStock.valueChange = 0;
-        callAPI(req, "Quote").then(function (data) {
-            newStock.price = data.LastPrice;
-            newTransaction.time = Date.now();
-            newTransaction.grossCost = newStock.amount * newStock.price;
-            newStock.user = req.user._id;
-            newTransaction.stock = newStock._id;
-            newTransaction.user = req.user._id;
-            if (newTransaction.grossCost <= req.user.game.amount) {
-                newStock.save(function (err) {
-                    if (err)
-                        console.log(err);
-                });
-                newTransaction.save(function (err) {
-                    if (err)
-                        console.log(err);
-                });
-                req.user.game.stocks.push(newStock);
-                req.user.game.transactions.push(newTransaction);
-                req.user.game.amount = req.user.game.amount - newTransaction.grossCost;
-                req.user.save(function (err) {
-                    if (err)
-                        console.log(err);
-                });
-            }
-        });
-        req.flash('notice', 'Processed transaction.');
-    } else {
-        req.flash('notice', 'Could not process transaction. Try again.');
-    }
-    res.redirect('/stock/' + req.params.ticker);
-};
-
-
 function callAPI(req, data) {
     var deferred = Q.defer();
     if (req.params.ticker)
@@ -73,6 +20,40 @@ function callAPI(req, data) {
     return deferred.promise;
 }
 
-function settleDues() {
-    var deferred = Q.defer();
+exports.lookupData = function (req, res) {
+    callAPI(req, "Lookup").then(function (data) {
+        res.json(JSON.parse(data));
+    });
+};
+
+exports.quoteData = function (req, res) {
+    callAPI(req, "Quote").then(function (data) {
+        res.json(JSON.parse(data));
+    });
+};
+
+exports.createNew = function (req, res) {
+    var stock;
+    function createStock() {
+        var deferred = Q.defer();
+        stock = new Stock();
+        stock.symbol = req.body.symbol;
+        callAPI(req, "Quote").then(function (data) {
+            stock.price = data.LastPrice;
+        });
+        stock.amount = req.body.numberOfShares;
+        stock.valueChange = 0;
+        stock.user = req.user._id;
+        deferred.resolve(stock);
+        return deferred.promise;
+    }
+    if (req.body.numberOfShares && req.body.numberOfShares > 0)
+        createStock().then(function (data) {
+            newStock.save(function (err) {
+                if (err)
+                    console.log(err);
+            }, function () {
+                res.send(data);
+            });
+        });
 }
