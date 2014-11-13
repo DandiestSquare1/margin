@@ -13,7 +13,7 @@ gulp.task('set-env', function () {
     });
 });
 
-gulp.task('server', function () {
+gulp.task('server', ['browserify', 'compress'], function () {
     //start the server at the beginning of the task
     server.run({
         file: 'app.js'
@@ -33,9 +33,8 @@ gulp.task('browserify', function() {
         .pipe(gulp.dest('public/javascripts/build'));
 });
 
-
 gulp.task('compress', function() {
-    gulp.src('public/javascripts/build/*.js')
+    gulp.src('public/javascripts/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('public/javascripts/build'))
 });
