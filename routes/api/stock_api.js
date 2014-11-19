@@ -1,12 +1,13 @@
 ﻿var Q = require('q');
 var request = require('request');
+var ObjectId = require('mongoose').Types.ObjectId;
 var Stock = require('../../models/stock');
 var Transaction = require('../../models/transaction');
 
-function callAPI(req, data) {
+function callAPI(ticker, data) {
     var deferred = Q.defer();
-    if (req.params.ticker)
-        request('http://dev.markitondemand.com/Api/v2/' + data + '/json?symbol=' + req.params.ticker, function (err, resp, body) {
+    if (ticker)
+        request('http://dev.markitondemand.com/Api/v2/' + data + '/json?symbol=' + ticker, function (err, resp, body) {
             if (err)
                 deferred.reject(err);
             if (resp) {
@@ -21,39 +22,38 @@ function callAPI(req, data) {
 }
 
 exports.lookupData = function (req, res) {
-    callAPI(req, "Lookup").then(function (data) {
+    callAPI(req.params.ticker, "Lookup").then(function (data) {
         res.json(JSON.parse(data));
     });
 };
 
 exports.quoteData = function (req, res) {
-    callAPI(req, "Quote").then(function (data) {
+    callAPI(req.params.ticker, "Quote").then(function (data) {
         res.json(JSON.parse(data));
     });
 };
 
 exports.createNew = function (req, res) {
-    var stock;
-    function createStock() {
+    function createStock(stock) {
         var deferred = Q.defer();
-        stock = new Stock();
         stock.symbol = req.body.symbol;
-        callAPI(req, "Quote").then(function (data) {
-            stock.price = data.LastPrice;
-        });
         stock.amount = req.body.numberOfShares;
         stock.valueChange = 0;
-        stock.user = req.user._id;
-        deferred.resolve(stock);
+        stock.user = new ObjectId(req.body.id.id);
+        callAPI(req.body.symbol, "Quote").then(function (data) {
+            stock.price = JSON.parse(data).LastPrice;
+            deferred.resolve(stock);
+        });
         return deferred.promise;
     }
-    if (req.body.numberOfShares && req.body.numberOfShares > 0)
-        createStock().then(function (data) {
-            newStock.save(function (err) {
+    if (req.body.numberOfShares && req.body.numberOfShares > 0) {
+        var stock = new Stock();
+        createStock(stock).then(function (data) {
+            data.save(function (err) {
                 if (err)
                     console.log(err);
-            }, function () {
                 res.send(data);
             });
         });
+    }
 }

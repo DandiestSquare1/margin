@@ -37,6 +37,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(require('connect-livereload')());
 app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -104,9 +105,9 @@ app.post('/user/change_password', account.changePassword);
 // Stock API
 app.get('/api/stock/lookup/:ticker', api.stock.lookupData);
 app.get('/api/stock/quote/:ticker', api.stock.quoteData);
+app.post('/api/stock', api.stock.createNew);
 
 app.get('/stock', isLoggedIn, stock.emptyParams);
-app.post('/stock', isLoggedIn, api.stock.createNew);
 app.get('/stock/:ticker', isLoggedIn, stock.displayByTicker);
 
 // Transaction API

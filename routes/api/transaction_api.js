@@ -1,4 +1,5 @@
 ﻿var Q = require('q');
+var ObjectId = require('mongoose').Types.ObjectId;
 var Transaction = require('../../models/transaction');
 
 exports.getData = function (req, res) {
@@ -11,23 +12,25 @@ exports.getData = function (req, res) {
 };
 
 exports.createNew = function (req, res) {
-    var purchase;
-    function createTransaction() {
+    console.log("called");
+    function createTransaction(purchase) {
+        console.log("entered");
         var deferred = Q.defer();
-        purchase = new Transaction();
+        console.log(JSON.stringify(req.body.stock));
         purchase.stock = req.body.stock._id;
         purchase.grossCost = req.body.stock.amount * req.body.stock.price;
         purchase.createdOn = Date.now();
-        purchase.user = req.user._id;
+        purchase.user = new ObjectId(req.body.id.id);
         deferred.resolve(purchase);
         return deferred.promise;
     }
-    createTransaction().then(function (data) {
-        if (data.grossCost <= req.user.game.amount)
+    var transaction = new Transaction();
+    createTransaction(transaction).then(function (data) {
+        console.log("final");
+        if (data.grossCost <= req.body.maxAmount)
             data.save(function (err) {
                 if (err)
                     console.log(err);
-            }, function () {
                 res.send(data);
             });
     });

@@ -80,15 +80,31 @@ exports.updateById = function (req, res) {
 };
 
 exports.processOrder = function (req, res) {
-    var order, stock;
+    var order, stock, host = req.get('host');
     request.post({
-        url: 'http://' + req.get('host') + '/stock',
+        url: 'http://' + host + '/api/stock',
         form: {
+            id: req.user._id,
             symbol: req.params.ticker,
             numberOfShares: req.body.numberOfShares
         }
-    }, function(err, resp, body){
-        console.log(body || err);
+    }, function (err, resp, body) {
+        if (err)
+            console.log(err);
+        stock = JSON.parse(body);
+        req.user.game.stocks.push(stock._id);
+        request.post({
+            url: 'http://' + host + '/api/transaction',
+            form: {
+                id: req.user._id,
+                maxAmount: req.user.game.amount,
+                stock: stock
+            }
+        }, function (err, resp, body) {
+            if (err)
+                console.log(err);
+            console.log(JSON.stringify(body));
+        });
     });
 
 /*
