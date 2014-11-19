@@ -20,15 +20,15 @@ gulp.task('server', ['browserify', 'compress'], function () {
     });
 
     //restart the server when file changes
-    gulp.watch(['app.js', 'routes/**/*.js', 'public/javascripts/*.js'], [server.run]);
+    gulp.watch(['app.js', 'routes/**/*.js'], [server.run]); //, 'public/javascripts/*.js'
 });
 
 gulp.task('browserify', function() {
     // Single entry point to browserify
     gulp.src('public/javascripts/app.js')
         .pipe(browserify({
-          insertGlobals : true,
-          debug : !gulp.env.production
+            insertGlobals : true,
+            debug : !gulp.env.production
         }))
         .pipe(gulp.dest('public/javascripts/build'));
 });
